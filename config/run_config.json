@@ -53,12 +53,12 @@
 
   "mixture": {
     "_doc": "Lane weights, protected floors and the anneal reserve are read from S5's data/ledger.json (mirrored into fixtures/upstream/s5_ledger.json) and collapsed onto the three curriculum stages the S6 session uses.",
-    "_budget_note": "614400 = train.total_steps (300) x microbatches_per_step (4) x microbatch_size (2) x sequence_length (256). The planned budget and what the run actually consumes are the same number on purpose, so planned-versus-actual mixture shares are a real comparison rather than a rescaled one. Stage boundaries sit at 55% and 85% of the budget, the same split widget 7 uses for its 0-66B / 66-102B / 102-120B timeline.",
-    "total_tokens": 614400,
+    "_budget_note": "276480 = train.total_steps (180) x microbatches_per_step (4) x microbatch_size (2) x sequence_length (192). The planned budget and what the run actually consumes are the same number on purpose, so planned-versus-actual mixture shares are a real comparison rather than a rescaled one. Stage boundaries sit at 55% and 85% of the budget, the same split widget 7 uses for its 0-66B / 66-102B / 102-120B timeline.",
+    "total_tokens": 276480,
     "stages": [
-      {"stage": "foundation",  "token_start": 0,      "token_end": 337920},
-      {"stage": "skill_build", "token_start": 337920, "token_end": 522240},
-      {"stage": "anneal",      "token_start": 522240, "token_end": 614400}
+      {"stage": "foundation",  "token_start": 0,      "token_end": 152064},
+      {"stage": "skill_build", "token_start": 152064, "token_end": 235008},
+      {"stage": "anneal",      "token_start": 235008, "token_end": 276480}
     ],
     "warmup_band_pct": 4.0,
     "stage_weights": {
@@ -78,44 +78,45 @@
     "defer_threshold": 0.34,
     "lane_quota_slack": 1.25,
     "model_age_buckets": [
-      {"name": "early",  "until_tokens": 400000},
-      {"name": "mid",    "until_tokens": 900000},
-      {"name": "late",   "until_tokens": 1200000}
+      {"name": "early",  "until_tokens": 100000},
+      {"name": "mid",    "until_tokens": 200000},
+      {"name": "late",   "until_tokens": 276480}
     ]
   },
 
   "batch": {
-    "sequence_length": 256,
+    "sequence_length": 192,
     "microbatch_size": 2,
     "microbatches_per_step": 4,
     "position_policy": "packed_reset_on_eos"
   },
 
   "train": {
-    "total_steps": 300,
-    "checkpoint_interval": 50,
+    "total_steps": 180,
+    "checkpoint_interval": 30,
     "learning_rate": 0.0025,
-    "warmup_steps": 20,
+    "warmup_steps": 15,
     "grad_clip": 1.0
   },
 
   "model": {
-    "_doc": "Tiny NumPy transformer. Small enough for a CPU demo, large enough that per-token loss deltas by lane are meaningful.",
+    "_doc": "Tiny NumPy transformer, hand-written forward and backward. Small enough for a CPU demo, large enough that per-token loss deltas by lane are meaningful. projected_vocab_size is the model output width, not the tokenizer: the 68,096-entry vocab is projected onto its 6,144 most frequent ids (about 89% of corpus token occurrences) so the logit tensor stays small. Shards, ledger events and batch hashes always use real tokenizer ids -- see tds/vocab.py.",
     "n_layer": 2,
     "n_head": 4,
     "d_model": 128,
     "d_ff": 512,
-    "vocab_cap": 68096,
+    "projected_vocab_size": 6144,
     "dropout": 0.0
   },
 
   "recovery": {
     "_doc": "The crash is a real os._exit(1) in a training subprocess, so the resuming process rebuilds from the checkpoint and ledger on disk only. If the whole demo shared one process, 'expected == actual' would be trivially true.",
-    "crash_at_step": 172,
+    "crash_at_step": 100,
     "crashed_rank": 4,
-    "replay_interval": {"step_start": 60, "step_end": 90},
-    "fork_from_step": 100,
-    "random_control_from_step": 100
+    "replay_interval": {"step_start": 40, "step_end": 60},
+    "fork_from_step": 60,
+    "random_control_from_step": 60,
+    "fork_steps": 20
   },
 
   "paths": {
