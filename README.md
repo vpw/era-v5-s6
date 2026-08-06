@@ -195,6 +195,27 @@ states and a shard with no verdict should not be read as a shard with a bad one.
 
 ---
 
+## Two results that read as contradictions and are not
+
+**Planned epochs vs. realised epochs.** The mixture compiler projects agentic at ~1.5 epochs,
+but `performance.json` reports every lane at 0 completed epochs. Both are right. The compiler
+sizes demand as `planned / keep_fraction` using **S5's planning assumption of a 60% OPUS
+rejection rate**; this run's selector actually rejected 38.5%, so real demand came in well below
+the conservative projection and no lane wrapped its cursor. The two figures are reported side by
+side in `performance.json` (`opus.planned_keep_fraction` against `opus.rejection_rate`) precisely
+so the gap is legible. A planning assumption being pessimistic is the normal case, not an error —
+but it would look like one if only the projection were shown.
+
+**Structure-preserving packing costs utilisation here, and did not in the session.** Widget 5
+found structure-preserving matching best-fit at 84% on its particular document lengths, so
+protecting sample boundaries was free. On our documents it is not: Indic and web reach ~99.5%
+under concat-and-chop, while agentic and reasoning sit at 63–65% under structure-preserving.
+Boundary safety is bought with padding, and how much it costs depends entirely on the length
+distribution. That is why all five policies are implemented and measured per lane in
+`manifests/packing_report.json` rather than a single number being quoted from the widget.
+
+---
+
 ## Artifacts
 
 ```
@@ -210,8 +231,23 @@ submission_artifacts/
   reports/                    resume, replay, fork/divergence, audit
 ```
 
-The tree committed here is the graded run of record. `python run_demo.py` regenerates it; the
-run is deterministic, so a regenerated tree should differ only in timestamps and timing figures.
+The tree committed here is the graded run of record.
+
+**Reproducibility is verified, not asserted.** The repo was cloned to a clean directory, given a
+fresh virtualenv, and run end to end. Against the committed run, the regenerated tree matched on:
+
+| | |
+|---|---|
+| shard ids, content hashes, lineage hashes, token counts | identical |
+| admission verdicts and per-lane supply | identical |
+| all **210** committed batch hashes | identical |
+| all token span ids and loss-mask hashes | identical |
+| model hash at every checkpoint | identical |
+| the OPUS decision log | byte-identical |
+
+Only timestamps and wall-clock timing figures differ. That is the property the whole design
+exists to produce: given the same fixtures and the same config, the data stream — and therefore
+the experiment — is reconstructible by anyone.
 
 **Checkpoint weights are not committed.** Each checkpoint is ~15 MB of float32 (model plus Adam
 moments), 139 MB across the run. `submission_artifacts/checkpoints/*.npz` is gitignored; every

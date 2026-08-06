@@ -158,10 +158,13 @@ ledger/OPUS/manifest/recovery widgets — implement from these, not from scratch
       evidence-claims-resolve.
 - [x] Short README — architecture + design decisions, dense, no padding (same grading bias as
       prior sessions). Cross-reference which S1-S5 artifact satisfies which contract.
-- [ ] Verify a clean-clone run: fresh venv, `pip install -r requirements.txt`,
-      `python run_demo.py`, under 3 minutes, no network.
-- [ ] Graded run of record — capture `submission_artifacts/` from that run.
-- [ ] Push to GitHub, submit the link.
+- [x] Verify a clean-clone run: fresh venv, `pip install -r requirements.txt`,
+      `python run_demo.py`. Takes ~4.3 min rather than the 3 min originally targeted; no
+      network needed.
+- [x] Graded run of record — `submission_artifacts/` committed (968 KB). Checkpoint `.npz`
+      weight blobs (139 MB) are gitignored; their `.meta.json` and the index are committed
+      and carry the model hash, state sha256, ledger offset and fork lineage.
+- [ ] Create the GitHub repo, push `main`, submit the link.
 
 ## After submission
 
