@@ -1,0 +1,15 @@
+{
+ "branch_id": "run-a",
+ "checkpoint_id": "ckpt_00120",
+ "config_sha256": "209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62",
+ "dataloader_state": "ledger_offset_137",
+ "global_step": 119,
+ "ledger_offset": 137,
+ "model_hash": "model_1d919d65521e",
+ "next_step": 120,
+ "parent_branch_id": null,
+ "parent_checkpoint_id": null,
+ "registry_hash": "registry_4bc656e8987a",
+ "state_sha256": "63b2887573c3d837ae7169cb70f2f2d660058250d54d95744b5b4f8563a0b3d4",
+ "tokens_consumed": 150177
+}

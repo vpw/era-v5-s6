@@ -1,0 +1,50 @@
+{
+ "admission": "blocked_from_training",
+ "admission_reasons": [
+  "hard requirement missing or failed: pii_screen_status"
+ ],
+ "admission_score": 77,
+ "capability_lane": "code",
+ "cleaning_pipeline": "s6_generator",
+ "cleaning_pipeline_hash": "clean_b0142b9d50ea",
+ "config_sha256": "209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62",
+ "content_hash": "sha256_859338bea13a",
+ "created_at": "2026-08-06T19:01:24.281Z",
+ "dedup_status": "passed",
+ "docs_file": "shard_code_f4986bcf.docs.jsonl",
+ "document_count": 1,
+ "eval_overlap_status": "clear",
+ "license_tier": "safe",
+ "normalizer_id": "sarvam1_bpe_no_normalizer",
+ "parent_manifest_ids": [],
+ "pii_screen_status": null,
+ "shard_id": "shard_code_f4986bcf",
+ "source_manifest": {
+  "origins": [
+   "injected"
+  ],
+  "source_urls": [],
+  "upstream_session": null
+ },
+ "special_tokens": {
+  "bos": {
+   "id": 1,
+   "token": "<s>"
+  },
+  "eos": {
+   "id": 2,
+   "token": "</s>"
+  },
+  "pad": {
+   "id": 3,
+   "token": "<<reserved_token_0>>"
+  },
+  "unk": {
+   "id": 0,
+   "token": "<unk>"
+  }
+ },
+ "token_count": 32,
+ "tokenizer_hash": "tok_bb5115a36ddb",
+ "tokens_file": "shard_code_f4986bcf.tokens.bin"
+}

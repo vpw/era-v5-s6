@@ -1,0 +1,482 @@
+{
+ "_doc": "Two-way learning ledger: per-token loss attributed back to the shards and lanes it came from, and what that implies for the next corpus.",
+ "by_lane": {
+  "agentic": {
+   "lane": "agentic",
+   "loss_delta": -0.8012,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 1.2893,
+     "stage": "foundation"
+    },
+    {
+     "mean_loss": 0.8191,
+     "stage": "skill_build"
+    },
+    {
+     "mean_loss": 0.4881,
+     "stage": "anneal"
+    }
+   ],
+   "mean_loss": 0.7611,
+   "mean_perplexity": 2.14,
+   "tokens_scored": 3937
+  },
+  "code": {
+   "lane": "code",
+   "loss_delta": -0.8517,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 1.3142,
+     "stage": "foundation"
+    },
+    {
+     "mean_loss": 0.7717,
+     "stage": "skill_build"
+    },
+    {
+     "mean_loss": 0.4625,
+     "stage": "anneal"
+    }
+   ],
+   "mean_loss": 0.7431,
+   "mean_perplexity": 2.1,
+   "tokens_scored": 20027
+  },
+  "indic": {
+   "lane": "indic",
+   "loss_delta": -0.9313,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 6.9445,
+     "stage": "foundation"
+    },
+    {
+     "mean_loss": 6.6956,
+     "stage": "skill_build"
+    },
+    {
+     "mean_loss": 6.0132,
+     "stage": "anneal"
+    }
+   ],
+   "mean_loss": 6.3911,
+   "mean_perplexity": 596.48,
+   "tokens_scored": 29759
+  },
+  "reasoning": {
+   "lane": "reasoning",
+   "loss_delta": -0.7679,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 1.5586,
+     "stage": "foundation"
+    },
+    {
+     "mean_loss": 1.0575,
+     "stage": "skill_build"
+    },
+    {
+     "mean_loss": 0.7907,
+     "stage": "anneal"
+    }
+   ],
+   "mean_loss": 0.9899,
+   "mean_perplexity": 2.69,
+   "tokens_scored": 18013
+  },
+  "web": {
+   "lane": "web",
+   "loss_delta": -0.0427,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 5.6342,
+     "stage": "foundation"
+    },
+    {
+     "mean_loss": 5.6686,
+     "stage": "skill_build"
+    },
+    {
+     "mean_loss": 5.5915,
+     "stage": "anneal"
+    }
+   ],
+   "mean_loss": 5.65,
+   "mean_perplexity": 284.3,
+   "tokens_scored": 35113
+  }
+ },
+ "by_shard": {
+  "shard_agentic_b4eb78c8": {
+   "first_step": 91,
+   "lane": "agentic",
+   "last_step": 178,
+   "ledger_backlinks": {
+    "batch_committed": "steps 91-178",
+    "learning_delta_attached": -0.8012,
+    "token_ppl_aggregated": "3937 scored tokens",
+    "v6_policy_hint": "keep_with_phase_guard"
+   },
+   "loss_delta": -0.8012,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 1.2893,
+     "stage": "foundation"
+    },
+    {
+     "mean_loss": 0.8191,
+     "stage": "skill_build"
+    },
+    {
+     "mean_loss": 0.4881,
+     "stage": "anneal"
+    }
+   ],
+   "manifest_token_count": 27643,
+   "mean_loss": 0.7611,
+   "mean_perplexity": 2.14,
+   "opus_decisions": 101,
+   "opus_score": 0.486,
+   "shard_id": "shard_agentic_b4eb78c8",
+   "tokens_scored": 3937,
+   "usefulness": 51,
+   "v6_policy_hint": "keep_with_phase_guard",
+   "verdict": "Loss fell steadily across exposures. Keep, and guard the phase it is scheduled into."
+  },
+  "shard_code_2a1dabaf": {
+   "first_step": 90,
+   "lane": "code",
+   "last_step": 130,
+   "ledger_backlinks": {
+    "batch_committed": "steps 90-130",
+    "learning_delta_attached": -0.4165,
+    "token_ppl_aggregated": "9718 scored tokens",
+    "v6_policy_hint": "keep_with_phase_guard"
+   },
+   "loss_delta": -0.4165,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 1.3142,
+     "stage": "foundation"
+    },
+    {
+     "mean_loss": 0.8977,
+     "stage": "skill_build"
+    }
+   ],
+   "manifest_token_count": 22604,
+   "mean_loss": 0.9665,
+   "mean_perplexity": 2.63,
+   "opus_decisions": 61,
+   "opus_score": 0.548,
+   "shard_id": "shard_code_2a1dabaf",
+   "tokens_scored": 9718,
+   "usefulness": 41,
+   "v6_policy_hint": "keep_with_phase_guard",
+   "verdict": "Loss fell steadily across exposures. Keep, and guard the phase it is scheduled into."
+  },
+  "shard_code_319315fd": {
+   "first_step": 130,
+   "lane": "code",
+   "last_step": 171,
+   "ledger_backlinks": {
+    "batch_committed": "steps 130-171",
+    "learning_delta_attached": -0.1196,
+    "token_ppl_aggregated": "8890 scored tokens",
+    "v6_policy_hint": "keep_with_phase_guard"
+   },
+   "loss_delta": -0.1196,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 0.5904,
+     "stage": "skill_build"
+    },
+    {
+     "mean_loss": 0.4708,
+     "stage": "anneal"
+    }
+   ],
+   "manifest_token_count": 22748,
+   "mean_loss": 0.5467,
+   "mean_perplexity": 1.73,
+   "opus_decisions": 63,
+   "opus_score": 0.508,
+   "shard_id": "shard_code_319315fd",
+   "tokens_scored": 8890,
+   "usefulness": 28,
+   "v6_policy_hint": "keep_with_phase_guard",
+   "verdict": "Loss fell steadily across exposures. Keep, and guard the phase it is scheduled into."
+  },
+  "shard_code_3b001b41": {
+   "first_step": 171,
+   "lane": "code",
+   "last_step": 179,
+   "ledger_backlinks": {
+    "batch_committed": "steps 171-179",
+    "learning_delta_attached": 0.0,
+    "token_ppl_aggregated": "1419 scored tokens",
+    "v6_policy_hint": "delay_or_reclean"
+   },
+   "loss_delta": 0.0,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 0.4433,
+     "stage": "anneal"
+    }
+   ],
+   "manifest_token_count": 22666,
+   "mean_loss": 0.4433,
+   "mean_perplexity": 1.56,
+   "opus_decisions": 10,
+   "opus_score": 0.554,
+   "shard_id": "shard_code_3b001b41",
+   "tokens_scored": 1419,
+   "usefulness": 16,
+   "v6_policy_hint": "delay_or_reclean",
+   "verdict": "Loss barely moved across exposures. Either the content is already learned or it is too noisy to learn from; re-clean or delay."
+  },
+  "shard_indic_14516f8f": {
+   "first_step": 90,
+   "lane": "indic",
+   "last_step": 147,
+   "ledger_backlinks": {
+    "batch_committed": "steps 90-147",
+    "learning_delta_attached": -0.1875,
+    "token_ppl_aggregated": "14498 scored tokens",
+    "v6_policy_hint": "keep_with_phase_guard"
+   },
+   "loss_delta": -0.1875,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 6.9445,
+     "stage": "foundation"
+    },
+    {
+     "mean_loss": 6.757,
+     "stage": "skill_build"
+    }
+   ],
+   "manifest_token_count": 126102,
+   "mean_loss": 6.7866,
+   "mean_perplexity": 885.87,
+   "opus_decisions": 153,
+   "opus_score": 0.542,
+   "shard_id": "shard_indic_14516f8f",
+   "tokens_scored": 14498,
+   "usefulness": 35,
+   "v6_policy_hint": "keep_with_phase_guard",
+   "verdict": "Loss fell steadily across exposures. Keep, and guard the phase it is scheduled into."
+  },
+  "shard_indic_369ffa39": {
+   "first_step": 149,
+   "lane": "indic",
+   "last_step": 179,
+   "ledger_backlinks": {
+    "batch_committed": "steps 149-179",
+    "learning_delta_attached": -0.028,
+    "token_ppl_aggregated": "15261 scored tokens",
+    "v6_policy_hint": "monitor_next_phase"
+   },
+   "loss_delta": -0.028,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 6.0412,
+     "stage": "skill_build"
+    },
+    {
+     "mean_loss": 6.0132,
+     "stage": "anneal"
+    }
+   ],
+   "manifest_token_count": 133036,
+   "mean_loss": 6.0153,
+   "mean_perplexity": 409.65,
+   "opus_decisions": 57,
+   "opus_score": 0.603,
+   "shard_id": "shard_indic_369ffa39",
+   "tokens_scored": 15261,
+   "usefulness": 30,
+   "v6_policy_hint": "monitor_next_phase",
+   "verdict": "Modest improvement. Worth another phase before deciding."
+  },
+  "shard_reasoning_80ca2517": {
+   "first_step": 91,
+   "lane": "reasoning",
+   "last_step": 107,
+   "ledger_backlinks": {
+    "batch_committed": "steps 91-107",
+    "learning_delta_attached": -0.186,
+    "token_ppl_aggregated": "2706 scored tokens",
+    "v6_policy_hint": "keep_with_phase_guard"
+   },
+   "loss_delta": -0.186,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 1.5586,
+     "stage": "foundation"
+    },
+    {
+     "mean_loss": 1.3726,
+     "stage": "skill_build"
+    }
+   ],
+   "manifest_token_count": 27441,
+   "mean_loss": 1.4405,
+   "mean_perplexity": 4.22,
+   "opus_decisions": 110,
+   "opus_score": 0.427,
+   "shard_id": "shard_reasoning_80ca2517",
+   "tokens_scored": 2706,
+   "usefulness": 23,
+   "v6_policy_hint": "keep_with_phase_guard",
+   "verdict": "Loss fell steadily across exposures. Keep, and guard the phase it is scheduled into."
+  },
+  "shard_reasoning_b4481c87": {
+   "first_step": 108,
+   "lane": "reasoning",
+   "last_step": 179,
+   "ledger_backlinks": {
+    "batch_committed": "steps 108-179",
+    "learning_delta_attached": -0.2059,
+    "token_ppl_aggregated": "15307 scored tokens",
+    "v6_policy_hint": "keep_with_phase_guard"
+   },
+   "loss_delta": -0.2059,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 0.9966,
+     "stage": "skill_build"
+    },
+    {
+     "mean_loss": 0.7907,
+     "stage": "anneal"
+    }
+   ],
+   "manifest_token_count": 27417,
+   "mean_loss": 0.9103,
+   "mean_perplexity": 2.48,
+   "opus_decisions": 96,
+   "opus_score": 0.594,
+   "shard_id": "shard_reasoning_b4481c87",
+   "tokens_scored": 15307,
+   "usefulness": 37,
+   "v6_policy_hint": "keep_with_phase_guard",
+   "verdict": "Loss fell steadily across exposures. Keep, and guard the phase it is scheduled into."
+  },
+  "shard_web_39d54910": {
+   "first_step": 90,
+   "lane": "web",
+   "last_step": 132,
+   "ledger_backlinks": {
+    "batch_committed": "steps 90-132",
+    "learning_delta_attached": 0.0336,
+    "token_ppl_aggregated": "20612 scored tokens",
+    "v6_policy_hint": "delay_or_reclean"
+   },
+   "loss_delta": 0.0336,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 5.6342,
+     "stage": "foundation"
+    },
+    {
+     "mean_loss": 5.6678,
+     "stage": "skill_build"
+    }
+   ],
+   "manifest_token_count": 167114,
+   "mean_loss": 5.6579,
+   "mean_perplexity": 286.54,
+   "opus_decisions": 163,
+   "opus_score": 0.512,
+   "shard_id": "shard_web_39d54910",
+   "tokens_scored": 20612,
+   "usefulness": 30,
+   "v6_policy_hint": "delay_or_reclean",
+   "verdict": "Loss ticked back up in the final stage. Valuable earlier, weak late; avoid spending anneal budget here without re-cleaning."
+  },
+  "shard_web_83c4ff7a": {
+   "first_step": 133,
+   "lane": "web",
+   "last_step": 179,
+   "ledger_backlinks": {
+    "batch_committed": "steps 133-179",
+    "learning_delta_attached": -0.0783,
+    "token_ppl_aggregated": "14501 scored tokens",
+    "v6_policy_hint": "keep_with_phase_guard"
+   },
+   "loss_delta": -0.0783,
+   "loss_trend_by_stage": [
+    {
+     "mean_loss": 5.6698,
+     "stage": "skill_build"
+    },
+    {
+     "mean_loss": 5.5915,
+     "stage": "anneal"
+    }
+   ],
+   "manifest_token_count": 151166,
+   "mean_loss": 5.6389,
+   "mean_perplexity": 281.15,
+   "opus_decisions": 69,
+   "opus_score": 0.451,
+   "shard_id": "shard_web_83c4ff7a",
+   "tokens_scored": 14501,
+   "usefulness": 29,
+   "v6_policy_hint": "keep_with_phase_guard",
+   "verdict": "Loss fell steadily across exposures. Keep, and guard the phase it is scheduled into."
+  }
+ },
+ "coverage": {
+  "admitted_shards": 31,
+  "note": "Shards not reached carry no verdict. A short run walks each lane's cursor only partway, so absence of a policy hint is not a negative judgement.",
+  "shards_not_reached": 21,
+  "shards_with_loss_attribution": 10
+ },
+ "hot_threshold_ppl": 20.0,
+ "lane_hardness_ranking": [
+  "indic",
+  "web",
+  "reasoning",
+  "agentic",
+  "code"
+ ],
+ "policy_hints": {
+  "delay_or_reclean": [
+   "shard_code_3b001b41",
+   "shard_web_39d54910"
+  ],
+  "keep_with_phase_guard": [
+   "shard_agentic_b4eb78c8",
+   "shard_code_2a1dabaf",
+   "shard_code_319315fd",
+   "shard_indic_14516f8f",
+   "shard_reasoning_80ca2517",
+   "shard_reasoning_b4481c87",
+   "shard_web_83c4ff7a"
+  ],
+  "monitor_next_phase": [
+   "shard_indic_369ffa39"
+  ]
+ },
+ "widget_11_comparison": {
+  "measured_first_stage_ranking": [
+   "indic",
+   "web",
+   "reasoning",
+   "code",
+   "agentic"
+  ],
+  "measured_last_stage_ranking": [
+   "indic",
+   "web",
+   "reasoning",
+   "agentic",
+   "code"
+  ],
+  "note": "Different corpus, different tokenizer coverage and a 1.5M-parameter model, so agreement is informative but disagreement is not a defect.",
+  "widget_finding": "indic hardest both early and late (125.9 -> 17.3 avg ppl), order indic > reasoning/agentic > code > pretrain"
+ }
+}

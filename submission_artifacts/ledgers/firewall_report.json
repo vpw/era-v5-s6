@@ -1,0 +1,206 @@
+{
+ "admitted": 6202,
+ "blocked": 6,
+ "blocked_despite_trainable_flag": [
+  "indic-631d403c05",
+  "web-375aa4c791",
+  "web-c2e4aa8f06",
+  "web-ff127bb381"
+ ],
+ "blocked_documents": [
+  {
+   "checks": {
+    "canary_match": {
+     "canary_scan": "clear"
+    },
+    "derived_content": {
+     "derived_data": "clear",
+     "marker": null
+    },
+    "never_train_flag": {
+     "registry_flag": "trainable"
+    },
+    "ngram_overlap": {
+     "ngram_hits": 191,
+     "ngrams_total": 203,
+     "overlap_pct": 94.09
+    }
+   },
+   "clauses": [
+    "benchmark overlap 94.09%"
+   ],
+   "doc_id": "indic-631d403c05",
+   "lane": "indic",
+   "reason": "rejected: benchmark overlap 94.09%",
+   "verdict": "blocked"
+  },
+  {
+   "checks": {
+    "canary_match": {
+     "canary_scan": "clear"
+    },
+    "derived_content": {
+     "derived_data": "benchmark derivative",
+     "marker": "step by step"
+    },
+    "never_train_flag": {
+     "registry_flag": "trainable"
+    },
+    "ngram_overlap": {
+     "ngram_hits": 139,
+     "ngrams_total": 166,
+     "overlap_pct": 83.73
+    }
+   },
+   "clauses": [
+    "benchmark overlap 83.73%",
+    "benchmark-derived content"
+   ],
+   "doc_id": "web-375aa4c791",
+   "lane": "web",
+   "reason": "rejected: benchmark overlap 83.73%, benchmark-derived content",
+   "verdict": "blocked"
+  },
+  {
+   "checks": {
+    "canary_match": {
+     "canary_scan": "clear"
+    },
+    "derived_content": {
+     "derived_data": "clear",
+     "marker": null
+    },
+    "never_train_flag": {
+     "registry_flag": "never_train"
+    },
+    "ngram_overlap": {
+     "ngram_hits": 32,
+     "ngrams_total": 44,
+     "overlap_pct": 72.73
+    }
+   },
+   "clauses": [
+    "never_train flag",
+    "benchmark overlap 72.73%"
+   ],
+   "doc_id": "web-3f41a0af2e",
+   "lane": "web",
+   "reason": "rejected: never_train flag, benchmark overlap 72.73%",
+   "verdict": "blocked"
+  },
+  {
+   "checks": {
+    "canary_match": {
+     "canary_scan": "clear"
+    },
+    "derived_content": {
+     "derived_data": "benchmark derivative",
+     "marker": "step by step"
+    },
+    "never_train_flag": {
+     "registry_flag": "trainable"
+    },
+    "ngram_overlap": {
+     "ngram_hits": 49,
+     "ngrams_total": 76,
+     "overlap_pct": 64.47
+    }
+   },
+   "clauses": [
+    "benchmark overlap 64.47%",
+    "benchmark-derived content"
+   ],
+   "doc_id": "web-c2e4aa8f06",
+   "lane": "web",
+   "reason": "rejected: benchmark overlap 64.47%, benchmark-derived content",
+   "verdict": "blocked"
+  },
+  {
+   "checks": {
+    "canary_match": {
+     "canary_scan": "clear"
+    },
+    "derived_content": {
+     "derived_data": "clear",
+     "marker": null
+    },
+    "never_train_flag": {
+     "registry_flag": "never_train"
+    },
+    "ngram_overlap": {
+     "ngram_hits": 39,
+     "ngrams_total": 51,
+     "overlap_pct": 76.47
+    }
+   },
+   "clauses": [
+    "never_train flag",
+    "benchmark overlap 76.47%"
+   ],
+   "doc_id": "web-c86b72fbc8",
+   "lane": "web",
+   "reason": "rejected: never_train flag, benchmark overlap 76.47%",
+   "verdict": "blocked"
+  },
+  {
+   "checks": {
+    "canary_match": {
+     "canary_scan": "match"
+    },
+    "derived_content": {
+     "derived_data": "clear",
+     "marker": null
+    },
+    "never_train_flag": {
+     "registry_flag": "trainable"
+    },
+    "ngram_overlap": {
+     "ngram_hits": 0,
+     "ngrams_total": 9,
+     "overlap_pct": 0.0
+    }
+   },
+   "clauses": [
+    "canary match"
+   ],
+   "doc_id": "web-ff127bb381",
+   "lane": "web",
+   "reason": "rejected: canary match",
+   "verdict": "blocked"
+  }
+ ],
+ "clause_counts": {
+  "benchmark overlap": 5,
+  "benchmark-derived content": 2,
+  "canary match": 1,
+  "never_train flag": 2
+ },
+ "config": {
+  "blocking_overlap_pct": 10.0,
+  "canary_prefix": "ERA5-S6-CANARY",
+  "checks_enabled": {
+   "canary_match": true,
+   "derived_content": true,
+   "never_train_flag": true,
+   "ngram_overlap": true
+  },
+  "eval_sets": {
+   "GSM8K": {
+    "distinct_ngrams": 29106,
+    "examples": 300
+   },
+   "MILU-Hindi": {
+    "distinct_ngrams": 13680,
+    "examples": 300
+   },
+   "MMLU": {
+    "distinct_ngrams": 8717,
+    "examples": 300
+   }
+  },
+  "fingerprints_total": 51503,
+  "min_ngram_hits": 2,
+  "ngram_n": 13
+ },
+ "scanned": 6208
+}

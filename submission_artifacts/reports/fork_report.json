@@ -1,0 +1,57 @@
+{
+ "conclusion": "The ledger is what makes the stream reproducible: the same checkpoint yields three different futures, and only ledger mode reproduces the recorded one.",
+ "fork_diverges": true,
+ "from_step": 60,
+ "ledger_reproduces_original": true,
+ "modes": {
+  "fork": {
+   "batch_hashes": [
+    "step_e98b50b35d40",
+    "step_f63c77a4e0c6",
+    "step_784408384089",
+    "step_76dd54d83b41",
+    "step_89186bd13131",
+    "step_f417897a27f2"
+   ],
+   "branch_id": "run-b",
+   "matches_original": false,
+   "meaning": "same checkpoint, deliberately different data, new branch id"
+  },
+  "ledger": {
+   "batch_hashes": [
+    "step_cb785c866c3b",
+    "step_65f39a42211d",
+    "step_6cb8190dcd5a",
+    "step_ff2616dc9599",
+    "step_916376e9a9c9",
+    "step_17dc9c08a48f"
+   ],
+   "branch_id": "run-a",
+   "matches_original": true,
+   "meaning": "same checkpoint, same data, same branch -- the run continues"
+  },
+  "random": {
+   "batch_hashes": [
+    "step_079775651e22",
+    "step_8d68b767a3a1",
+    "step_d97c49d01d89",
+    "step_7715d1ec7d74",
+    "step_2346958c7988",
+    "step_e6e0c36e515f"
+   ],
+   "branch_id": "run-a",
+   "matches_original": false,
+   "meaning": "same checkpoint, re-seeded sampler, no ledger consulted -- and the branch id still says run-a"
+  }
+ },
+ "original_stream": [
+  "step_cb785c866c3b",
+  "step_65f39a42211d",
+  "step_6cb8190dcd5a",
+  "step_ff2616dc9599",
+  "step_916376e9a9c9",
+  "step_17dc9c08a48f"
+ ],
+ "random_diverges": true,
+ "steps_compared": 6
+}

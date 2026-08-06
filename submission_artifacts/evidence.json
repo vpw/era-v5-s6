@@ -1,0 +1,475 @@
+{
+ "_doc": "Generated from reports/audit_report.json, which re-derives every claim from the artifacts on disk. Not written by the training run.",
+ "config": {
+  "config_path": "config/run_config.json",
+  "config_sha256": "209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62",
+  "run_id": "s6-demo",
+  "seed": 20260806
+ },
+ "requirements": [
+  {
+   "backing_check": "tokenizer_integrity",
+   "detail": {
+    "claimed_in_manifests": [
+     "tok_bb5115a36ddb"
+    ],
+    "manifests_checked": 33,
+    "normalizer_ids": [
+     "sarvam1_bpe_no_normalizer"
+    ],
+    "recomputed_from_file": "tok_bb5115a36ddb"
+   },
+   "evidence_kind": "Manifest record",
+   "evidence_paths": [
+    "submission_artifacts/manifests/*.manifest.json",
+    "fixtures/tokenizer/tokenizer-sarvam1.json"
+   ],
+   "headline": "tok_bb5115a36ddb across 33 manifests",
+   "requirement": "Tokenizer integrity",
+   "result": "PASS"
+  },
+  {
+   "backing_check": "eval_firewall",
+   "detail": {
+    "blocked_despite_trainable_flag": [
+     "indic-631d403c05",
+     "web-375aa4c791",
+     "web-c2e4aa8f06",
+     "web-ff127bb381"
+    ],
+    "blocked_documents_found_in_admitted_shards": [],
+    "canary_prefix": "ERA5-S6-CANARY",
+    "clause_counts": {
+     "benchmark overlap": 5,
+     "benchmark-derived content": 2,
+     "canary match": 1,
+     "never_train flag": 2
+    },
+    "documents_blocked": 6,
+    "documents_scanned": 6208,
+    "independent_checks": [
+     "canary_match",
+     "derived_content",
+     "never_train_flag",
+     "ngram_overlap"
+    ]
+   },
+   "evidence_kind": "Blocked-shard event",
+   "evidence_paths": [
+    "submission_artifacts/ledgers/firewall_report.json"
+   ],
+   "headline": "6 of 6208 blocked, 4 despite a trainable flag; 0 found in admitted shards",
+   "requirement": "Evaluation firewall",
+   "result": "PASS"
+  },
+  {
+   "backing_check": "packing_masks",
+   "detail": {
+    "context_length": 192,
+    "lanes_reported": [
+     "agentic",
+     "code",
+     "indic",
+     "reasoning",
+     "web"
+    ],
+    "policies_implemented": [
+     "best_fit",
+     "concat_and_chop",
+     "greedy",
+     "pad_each_doc",
+     "structure_preserving"
+    ],
+    "policy_issues": [],
+    "position_policies_recorded": [
+     "packed_reset_on_eos"
+    ],
+    "token_span_width_issues": []
+   },
+   "evidence_kind": "Packed-batch report",
+   "evidence_paths": [
+    "submission_artifacts/manifests/packing_report.json",
+    "submission_artifacts/ledgers/consumption.jsonl"
+   ],
+   "headline": "5 policies, context 192, position policy packed_reset_on_eos",
+   "requirement": "Packing correctness",
+   "result": "PASS"
+  },
+  {
+   "backing_check": "mixture_opus",
+   "detail": {
+    "decision_types_observed": [
+     "accepted",
+     "deferred",
+     "protected",
+     "rejected"
+    ],
+    "firewall_hits_rescued_by_floor": [],
+    "max_absolute_drift": 0.0,
+    "opus_decisions": 1170,
+    "planned_vs_actual_slot_drift": {
+     "agentic": 0.0,
+     "code": 0.0,
+     "indic": 0.0,
+     "reasoning": 0.0,
+     "web": 0.0
+    },
+    "protected_floor_violations_in_schedule": [],
+    "rejection_reasons_observed": [
+     "below_proxy_threshold",
+     "deferred_for_anneal",
+     "protected_floor_override"
+    ],
+    "supply_check": {
+     "agentic": {
+      "epochs_required": 1.485,
+      "planned_tokens": 22119,
+      "required_after_opus": 55298,
+      "status": "covered_by_repetition",
+      "verified_supply_tokens": 37242,
+      "within_epoch_ceiling": true
+     },
+     "code": {
+      "epochs_required": 0.685,
+      "planned_tokens": 61931,
+      "required_after_opus": 154828,
+      "status": "satisfied_by_unique_tokens",
+      "verified_supply_tokens": 226056,
+      "within_epoch_ceiling": true
+     },
+     "indic": {
+      "epochs_required": 0.155,
+      "planned_tokens": 51701,
+      "required_after_opus": 129252,
+      "status": "satisfied_by_unique_tokens",
+      "verified_supply_tokens": 834210,
+      "within_epoch_ceiling": true
+     },
+     "reasoning": {
+      "epochs_required": 0.62,
+      "planned_tokens": 43269,
+      "required_after_opus": 108172,
+      "status": "satisfied_by_unique_tokens",
+      "verified_supply_tokens": 174357,
+      "within_epoch_ceiling": true
+     },
+     "web": {
+      "epochs_required": 0.392,
+      "planned_tokens": 97459,
+      "required_after_opus": 243648,
+      "status": "satisfied_by_unique_tokens",
+      "verified_supply_tokens": 620771,
+      "within_epoch_ceiling": true
+     }
+    }
+   },
+   "evidence_kind": "Planned versus actual shares",
+   "evidence_paths": [
+    "submission_artifacts/manifests/mixture_schedule.json",
+    "submission_artifacts/ledgers/opus_decisions.jsonl"
+   ],
+   "headline": "1170 decisions, max lane drift 0.0, 0 firewall hits rescued by a floor",
+   "requirement": "Mixture compliance",
+   "result": "PASS"
+  },
+  {
+   "backing_check": "mixture_opus",
+   "detail": {
+    "decision_types_observed": [
+     "accepted",
+     "deferred",
+     "protected",
+     "rejected"
+    ],
+    "firewall_hits_rescued_by_floor": [],
+    "max_absolute_drift": 0.0,
+    "opus_decisions": 1170,
+    "planned_vs_actual_slot_drift": {
+     "agentic": 0.0,
+     "code": 0.0,
+     "indic": 0.0,
+     "reasoning": 0.0,
+     "web": 0.0
+    },
+    "protected_floor_violations_in_schedule": [],
+    "rejection_reasons_observed": [
+     "below_proxy_threshold",
+     "deferred_for_anneal",
+     "protected_floor_override"
+    ],
+    "supply_check": {
+     "agentic": {
+      "epochs_required": 1.485,
+      "planned_tokens": 22119,
+      "required_after_opus": 55298,
+      "status": "covered_by_repetition",
+      "verified_supply_tokens": 37242,
+      "within_epoch_ceiling": true
+     },
+     "code": {
+      "epochs_required": 0.685,
+      "planned_tokens": 61931,
+      "required_after_opus": 154828,
+      "status": "satisfied_by_unique_tokens",
+      "verified_supply_tokens": 226056,
+      "within_epoch_ceiling": true
+     },
+     "indic": {
+      "epochs_required": 0.155,
+      "planned_tokens": 51701,
+      "required_after_opus": 129252,
+      "status": "satisfied_by_unique_tokens",
+      "verified_supply_tokens": 834210,
+      "within_epoch_ceiling": true
+     },
+     "reasoning": {
+      "epochs_required": 0.62,
+      "planned_tokens": 43269,
+      "required_after_opus": 108172,
+      "status": "satisfied_by_unique_tokens",
+      "verified_supply_tokens": 174357,
+      "within_epoch_ceiling": true
+     },
+     "web": {
+      "epochs_required": 0.392,
+      "planned_tokens": 97459,
+      "required_after_opus": 243648,
+      "status": "satisfied_by_unique_tokens",
+      "verified_supply_tokens": 620771,
+      "within_epoch_ceiling": true
+     }
+    }
+   },
+   "evidence_kind": "Candidate decision records",
+   "evidence_paths": [
+    "submission_artifacts/manifests/mixture_schedule.json",
+    "submission_artifacts/ledgers/opus_decisions.jsonl"
+   ],
+   "headline": "1170 decisions, max lane drift 0.0, 0 firewall hits rescued by a floor",
+   "requirement": "OPUS audit trail",
+   "result": "PASS"
+  },
+  {
+   "backing_check": "crash_recovery",
+   "detail": {
+    "branches": [
+     "run-a"
+    ],
+    "checkpoints": 6,
+    "crash_step": 100,
+    "next_batch_after_resume": {
+     "expected_batch_hash": "step_78ef23e2accc",
+     "expected_token_spans": [
+      "indic_90_0:0-191",
+      "indic_90_1:0-191",
+      "web_90_0:0-191",
+      "web_90_1:0-191",
+      "code_90_0:0-191",
+      "code_90_1:0-191",
+      "web_90_0:0-191",
+      "web_90_1:0-191"
+     ],
+     "matched": true,
+     "resumed_batch_hash": "step_78ef23e2accc",
+     "resumed_token_spans": [
+      "indic_90_0:0-191",
+      "indic_90_1:0-191",
+      "web_90_0:0-191",
+      "web_90_1:0-191",
+      "code_90_0:0-191",
+      "code_90_1:0-191",
+      "web_90_0:0-191",
+      "web_90_1:0-191"
+     ],
+     "step": 90
+    },
+    "recovery_modes": {
+     "fork": {
+      "branch_id": "run-b",
+      "matches_original": false
+     },
+     "ledger": {
+      "branch_id": "run-a",
+      "matches_original": true
+     },
+     "random": {
+      "branch_id": "run-a",
+      "matches_original": false
+     }
+    },
+    "restored_checkpoint": "ckpt_00090",
+    "rollback_steps_matched": "10/10",
+    "rollback_window": [
+     90,
+     100
+    ]
+   },
+   "evidence_kind": "Expected and resumed batch ids",
+   "evidence_paths": [
+    "submission_artifacts/reports/resume_report.json",
+    "submission_artifacts/reports/fork_report.json"
+   ],
+   "headline": "crash at step 100, rolled back to ckpt_00090, 10/10 steps identical",
+   "requirement": "Crash recovery",
+   "result": "PASS"
+  },
+  {
+   "backing_check": "replay",
+   "detail": {
+    "compared_fields": [
+     "batch_hash",
+     "loss_mask_hash",
+     "token_span_ids",
+     "packed_sample_ids",
+     "shard_ids",
+     "microbatch_hashes",
+     "microbatch_lanes",
+     "mixture_lane",
+     "curriculum_stage",
+     "opus_decision_id",
+     "loss_bearing_tokens"
+    ],
+    "independent_shard_readback_ok": true,
+    "independent_shard_readback_step": 90,
+    "interval": [
+     40,
+     60
+    ],
+    "mismatched_steps": [],
+    "sample": {
+     "40": {
+      "recorded_batch_hash": "step_76330d50a45b",
+      "replay_batch_hash": "step_76330d50a45b",
+      "token_span_ids": [
+       "indic_40_0:0-191",
+       "indic_40_1:0-191",
+       "web_40_0:0-191",
+       "web_40_1:0-191"
+      ]
+     },
+     "41": {
+      "recorded_batch_hash": "step_f7b6f024cb61",
+      "replay_batch_hash": "step_f7b6f024cb61",
+      "token_span_ids": [
+       "web_41_0:0-191",
+       "web_41_1:0-191",
+       "reasoning_41_0:0-191",
+       "reasoning_41_1:0-191"
+      ]
+     },
+     "42": {
+      "recorded_batch_hash": "step_bc92f273b0c7",
+      "replay_batch_hash": "step_bc92f273b0c7",
+      "token_span_ids": [
+       "code_42_0:0-191",
+       "code_42_1:0-191",
+       "web_42_0:0-191",
+       "web_42_1:0-191"
+      ]
+     }
+    },
+    "steps_matched": "20/20"
+   },
+   "evidence_kind": "Original and replay hashes",
+   "evidence_paths": [
+    "submission_artifacts/reports/replay_report.json"
+   ],
+   "headline": "steps 40-60, 20/20 matched on 11 fields",
+   "requirement": "Replay",
+   "result": "PASS"
+  },
+  {
+   "backing_check": "ledgers",
+   "detail": {
+    "duplicate_offsets": [],
+    "issues": [],
+    "lane_hardness_ranking": [
+     "indic",
+     "web",
+     "reasoning",
+     "agentic",
+     "code"
+    ],
+    "learning_ledger_shards_with_measured_loss": 10,
+    "ledger_events": 221,
+    "offsets_contiguous": true,
+    "per_branch": {
+     "run-a": {
+      "effective_steps": 180,
+      "events": 190,
+      "recovery_epochs": [
+       0,
+       1
+      ],
+      "step_range": [
+       0,
+       179
+      ],
+      "superseded_by_rollback": 10
+     },
+     "run-b": {
+      "effective_steps": 20,
+      "events": 20,
+      "recovery_epochs": [
+       0
+      ],
+      "step_range": [
+       60,
+       79
+      ],
+      "superseded_by_rollback": 0
+     }
+    }
+   },
+   "evidence_kind": "Loss linked to source data",
+   "evidence_paths": [
+    "submission_artifacts/ledgers/consumption.jsonl",
+    "submission_artifacts/ledgers/learning_ledger.json"
+   ],
+   "headline": "221 events, offsets contiguous=True, 10 shards with measured loss",
+   "requirement": "Learning trace",
+   "result": "PASS"
+  },
+  {
+   "backing_check": "throughput",
+   "detail": {
+    "buckets_sum_to_total": true,
+    "loss_bearing_tokens_in_ledger": 221193,
+    "packing_utilization_by_lane": {
+     "agentic": 0.6358,
+     "code": 0.6761,
+     "indic": 0.9963,
+     "reasoning": 0.6492,
+     "web": 0.9952
+    },
+    "token_fate": {
+     "opus_rejected": 172800,
+     "padding_and_context_waste": 29843,
+     "shares": {
+      "opus_rejected": 0.3846,
+      "padding_and_context_waste": 0.0664,
+      "useful": 0.549
+     },
+     "total_prepared": 449280,
+     "useful_loss_bearing": 246637
+    },
+    "useful_tokens_per_second_recomputed": 2968.8,
+    "useful_tokens_per_second_reported": 2968.8
+   },
+   "evidence_kind": "Performance report",
+   "evidence_paths": [
+    "submission_artifacts/performance.json"
+   ],
+   "headline": "2968.8 useful tokens/sec, buckets reconcile=True",
+   "requirement": "Throughput",
+   "result": "PASS"
+  }
+ ],
+ "summary": {
+  "all_passed": true,
+  "audit_checks_passed": "9/9",
+  "failed": 0,
+  "passed": 9,
+  "total": 9
+ }
+}

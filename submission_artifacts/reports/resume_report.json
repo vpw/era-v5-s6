@@ -1,0 +1,42 @@
+{
+ "all_matched": true,
+ "branch_id": "run-a",
+ "checkpoint_id": "ckpt_00090",
+ "checkpoint_ledger_offset": 93,
+ "checkpoint_next_step": 90,
+ "crash_step": 100,
+ "mismatched_steps": [],
+ "next_batch_after_resume": {
+  "expected_batch_hash": "step_78ef23e2accc",
+  "expected_token_spans": [
+   "indic_90_0:0-191",
+   "indic_90_1:0-191",
+   "web_90_0:0-191",
+   "web_90_1:0-191",
+   "code_90_0:0-191",
+   "code_90_1:0-191",
+   "web_90_0:0-191",
+   "web_90_1:0-191"
+  ],
+  "matched": true,
+  "resumed_batch_hash": "step_78ef23e2accc",
+  "resumed_token_spans": [
+   "indic_90_0:0-191",
+   "indic_90_1:0-191",
+   "web_90_0:0-191",
+   "web_90_1:0-191",
+   "code_90_0:0-191",
+   "code_90_1:0-191",
+   "web_90_0:0-191",
+   "web_90_1:0-191"
+  ],
+  "step": 90
+ },
+ "note": "The compared records were written by the process that crashed. Matching them requires the stream to be reconstructible from the checkpoint and the ledger alone.",
+ "rollback_window": [
+  90,
+  100
+ ],
+ "steps_in_window": 10,
+ "steps_matched": 10
+}

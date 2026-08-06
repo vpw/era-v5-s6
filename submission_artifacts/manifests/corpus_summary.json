@@ -1,0 +1,40 @@
+{
+ "agentic": {
+  "characters": 106798,
+  "documents": 300,
+  "origins": {
+   "generated": 300
+  }
+ },
+ "code": {
+  "characters": 619828,
+  "documents": 2202,
+  "origins": {
+   "generated": 2200,
+   "injected": 2
+  }
+ },
+ "indic": {
+  "characters": 2862926,
+  "documents": 1401,
+  "origins": {
+   "injected": 1,
+   "s4": 1400
+  }
+ },
+ "reasoning": {
+  "characters": 434826,
+  "documents": 1400,
+  "origins": {
+   "generated": 1400
+  }
+ },
+ "web": {
+  "characters": 2353441,
+  "documents": 905,
+  "origins": {
+   "injected": 5,
+   "s4": 900
+  }
+ }
+}

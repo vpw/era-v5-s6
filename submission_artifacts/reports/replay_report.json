@@ -1,0 +1,179 @@
+{
+ "all_matched": true,
+ "branch_id": "run-a",
+ "compared_fields": [
+  "batch_hash",
+  "loss_mask_hash",
+  "token_span_ids",
+  "packed_sample_ids",
+  "shard_ids",
+  "microbatch_hashes",
+  "microbatch_lanes",
+  "mixture_lane",
+  "curriculum_stage",
+  "opus_decision_id",
+  "loss_bearing_tokens"
+ ],
+ "interval": [
+  40,
+  60
+ ],
+ "mismatched_steps": [],
+ "per_step": {
+  "40": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_76330d50a45b",
+   "regenerated_batch_hash": "step_76330d50a45b"
+  },
+  "41": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_f7b6f024cb61",
+   "regenerated_batch_hash": "step_f7b6f024cb61"
+  },
+  "42": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_bc92f273b0c7",
+   "regenerated_batch_hash": "step_bc92f273b0c7"
+  },
+  "43": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_b0742d62eb46",
+   "regenerated_batch_hash": "step_b0742d62eb46"
+  },
+  "44": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_39509bf12b7e",
+   "regenerated_batch_hash": "step_39509bf12b7e"
+  },
+  "45": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_8631b9d2daac",
+   "regenerated_batch_hash": "step_8631b9d2daac"
+  },
+  "46": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_f1454ea142e9",
+   "regenerated_batch_hash": "step_f1454ea142e9"
+  },
+  "47": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_d58bf150c7c5",
+   "regenerated_batch_hash": "step_d58bf150c7c5"
+  },
+  "48": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_55dd65d974e0",
+   "regenerated_batch_hash": "step_55dd65d974e0"
+  },
+  "49": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_33e2b4cb1dfd",
+   "regenerated_batch_hash": "step_33e2b4cb1dfd"
+  },
+  "50": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_c8293531c470",
+   "regenerated_batch_hash": "step_c8293531c470"
+  },
+  "51": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_56113193d4f6",
+   "regenerated_batch_hash": "step_56113193d4f6"
+  },
+  "52": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_15336da47283",
+   "regenerated_batch_hash": "step_15336da47283"
+  },
+  "53": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_c030af1d21e0",
+   "regenerated_batch_hash": "step_c030af1d21e0"
+  },
+  "54": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_6a66e7a86210",
+   "regenerated_batch_hash": "step_6a66e7a86210"
+  },
+  "55": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_94f896b70ec9",
+   "regenerated_batch_hash": "step_94f896b70ec9"
+  },
+  "56": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_31cb4ab81a92",
+   "regenerated_batch_hash": "step_31cb4ab81a92"
+  },
+  "57": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_145be7387cc3",
+   "regenerated_batch_hash": "step_145be7387cc3"
+  },
+  "58": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_60328221751b",
+   "regenerated_batch_hash": "step_60328221751b"
+  },
+  "59": {
+   "matched": true,
+   "mismatched_fields": [],
+   "recorded_batch_hash": "step_2304bd005524",
+   "regenerated_batch_hash": "step_2304bd005524"
+  }
+ },
+ "sample": {
+  "40": {
+   "recorded_batch_hash": "step_76330d50a45b",
+   "replay_batch_hash": "step_76330d50a45b",
+   "token_span_ids": [
+    "indic_40_0:0-191",
+    "indic_40_1:0-191",
+    "web_40_0:0-191",
+    "web_40_1:0-191"
+   ]
+  },
+  "41": {
+   "recorded_batch_hash": "step_f7b6f024cb61",
+   "replay_batch_hash": "step_f7b6f024cb61",
+   "token_span_ids": [
+    "web_41_0:0-191",
+    "web_41_1:0-191",
+    "reasoning_41_0:0-191",
+    "reasoning_41_1:0-191"
+   ]
+  },
+  "42": {
+   "recorded_batch_hash": "step_bc92f273b0c7",
+   "replay_batch_hash": "step_bc92f273b0c7",
+   "token_span_ids": [
+    "code_42_0:0-191",
+    "code_42_1:0-191",
+    "web_42_0:0-191",
+    "web_42_1:0-191"
+   ]
+  }
+ },
+ "steps_compared": 20,
+ "steps_matched": 20,
+ "steps_mismatched": 0
+}

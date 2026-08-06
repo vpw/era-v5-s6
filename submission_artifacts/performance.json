@@ -1,0 +1,103 @@
+{
+ "_doc": "Token fate and throughput, all measured. Recomputable from the consumption ledger and the trainer's own timings.",
+ "caveat": "Wall time is CPU NumPy on a toy model. The ratios -- what share of prepared tokens became loss-bearing, how much went to padding, how much OPUS discarded -- are the transferable numbers here, not the absolute rate.",
+ "mixture_compliance": {
+  "_doc": "Planned versus actual. Slot share is what the compiled schedule promised; token share is what the model was actually scored on.",
+  "by_lane": {
+   "agentic": {
+    "actual_loss_bearing_token_share": 0.0367,
+    "actual_slot_share": 0.0813,
+    "planned_slot_share": 0.0806,
+    "slot_drift": 0.0007
+   },
+   "code": {
+    "actual_loss_bearing_token_share": 0.1662,
+    "actual_slot_share": 0.22,
+    "planned_slot_share": 0.2222,
+    "slot_drift": -0.0022
+   },
+   "indic": {
+    "actual_loss_bearing_token_share": 0.2328,
+    "actual_slot_share": 0.185,
+    "planned_slot_share": 0.1875,
+    "slot_drift": -0.0025
+   },
+   "reasoning": {
+    "actual_loss_bearing_token_share": 0.1261,
+    "actual_slot_share": 0.1512,
+    "planned_slot_share": 0.1569,
+    "slot_drift": -0.0057
+   },
+   "web": {
+    "actual_loss_bearing_token_share": 0.4382,
+    "actual_slot_share": 0.3625,
+    "planned_slot_share": 0.3528,
+    "slot_drift": 0.0097
+   }
+  },
+  "max_absolute_slot_drift": 0.0097,
+  "note": "Slot drift comes only from OPUS retries within a slot's lane, so it stays near zero by construction. Token share differs from slot share because lanes differ in how many of their positions carry loss.",
+  "slot_shares_match_plan": true
+ },
+ "model": {
+  "parameters": 1206784,
+  "vocab_projection_coverage": 0.8803
+ },
+ "opus": {
+  "candidates_prepared": 1170,
+  "decisions": 1170,
+  "planned_keep_fraction": 0.4,
+  "rejection_rate": 0.3846,
+  "slots_hitting_attempt_cap": 0
+ },
+ "packing": {
+  "configured_policy_by_lane": {
+   "agentic": "structure_preserving",
+   "code": "best_fit",
+   "indic": "concat_and_chop",
+   "reasoning": "structure_preserving",
+   "web": "concat_and_chop"
+  },
+  "context_length": 192,
+  "utilization_by_lane": {
+   "agentic": 0.6358,
+   "code": 0.6761,
+   "indic": 0.9963,
+   "reasoning": 0.6492,
+   "web": 0.9952
+  }
+ },
+ "supply": {
+  "admitted_shards": 31,
+  "documents_drawn": 2387,
+  "epoch_ceiling": 4.0,
+  "lane_epochs": {
+   "agentic": 0,
+   "code": 0,
+   "indic": 0,
+   "reasoning": 0,
+   "web": 0
+  }
+ },
+ "throughput": {
+  "compute_seconds": 82.74,
+  "data_seconds": 0.3361,
+  "loader_wait_share": 0.004,
+  "prepared_tokens_per_second": 5408.1,
+  "seconds_per_step": 0.9231,
+  "steps": 90,
+  "useful_tokens_per_second": 2968.8,
+  "wall_seconds": 83.0761
+ },
+ "token_fate": {
+  "opus_rejected": 172800,
+  "padding_and_context_waste": 29843,
+  "shares": {
+   "opus_rejected": 0.3846,
+   "padding_and_context_waste": 0.0664,
+   "useful": 0.549
+  },
+  "total_prepared": 449280,
+  "useful_loss_bearing": 246637
+ }
+}

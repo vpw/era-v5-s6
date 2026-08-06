@@ -117,8 +117,12 @@ class LaneCursor:
 class PlannerStats:
     documents_drawn: int = 0
     candidates_prepared: int = 0
-    candidate_tokens_prepared: int = 0
-    rejected_tokens: int = 0
+    # Positions, not tokens. A position that ended up as padding was still read, packed,
+    # masked and carried into a batch, so it belongs in the token-fate budget. Counting
+    # only non-pad tokens would make padding waste vanish by construction.
+    positions_prepared: int = 0
+    positions_rejected: int = 0
+    nonpad_prepared: int = 0
     slots_hitting_attempt_cap: int = 0
     lane_epochs: dict = field(default_factory=dict)
 
@@ -130,11 +134,18 @@ class StreamPlanner:
         registry: ShardRegistry,
         schedule: MixtureSchedule,
         branch_id: str,
+        stream_key: str | None = None,
     ):
         self.config = config
         self.registry = registry
         self.schedule = schedule
         self.branch_id = branch_id
+        # What the candidate stream is keyed on. Normally the branch id, so a fork
+        # produces a different -- but equally reproducible -- stream from the same
+        # checkpoint. Widget 14's `random` recovery mode is the case where the two come
+        # apart: the branch stays run-a while the sampler is re-seeded, which is exactly
+        # the situation a ledger exists to prevent.
+        self.stream_key = stream_key or branch_id
         self.seed = config.require("run.seed")
 
         self.context = config.require("batch.sequence_length")
@@ -244,7 +255,7 @@ class StreamPlanner:
         doc_ids = sorted({span["doc_id"] for span in source_spans})
         shard_ids = sorted({span["shard_id"] for span in source_spans})
         candidate_batch_id = "cand_" + short(
-            sha256_json([self.branch_id, step, microbatch, attempt, doc_ids]), 8
+            sha256_json([self.stream_key, step, microbatch, attempt, doc_ids]), 8
         )
 
         candidate = Candidate(
@@ -266,7 +277,8 @@ class StreamPlanner:
 
         self.stats.documents_drawn += len(drawn)
         self.stats.candidates_prepared += 1
-        self.stats.candidate_tokens_prepared += batch.non_pad_tokens
+        self.stats.positions_prepared += int(batch.shape[0] * batch.shape[1])
+        self.stats.nonpad_prepared += batch.non_pad_tokens
 
         return candidate, batch, stats, packed_sample_ids, token_span_ids, source_spans, len(drawn)
 
@@ -310,7 +322,7 @@ class StreamPlanner:
                     accepted = (candidate, batch, packing_stats, sample_ids, span_ids,
                                 source_spans, record, attempt + 1, drawn)
                     break
-                self.stats.rejected_tokens += batch.non_pad_tokens
+                self.stats.positions_rejected += int(batch.shape[0] * batch.shape[1])
             else:
                 # Attempt cap reached: take the last candidate so the run continues, and
                 # record that it happened rather than hiding it.

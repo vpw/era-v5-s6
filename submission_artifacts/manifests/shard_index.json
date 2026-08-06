@@ -1,0 +1,365 @@
+{
+ "admitted": 31,
+ "blocked_from_training": 1,
+ "by_shard": {
+  "shard_agentic_b4eb78c8": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "agentic",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 27643
+  },
+  "shard_agentic_c6fe0643": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 80,
+   "lane": "agentic",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 9599
+  },
+  "shard_code_0c28b8ff": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "code",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 22633
+  },
+  "shard_code_155142b8": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "code",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 22558
+  },
+  "shard_code_156e02a8": {
+   "admission": "held_for_review",
+   "admission_score": 68,
+   "documents": 1,
+   "lane": "code",
+   "reasons": [
+    "dedup_status absent; near-duplicate group unknown",
+    "license_tier 'unknown' needs legal review"
+   ],
+   "token_count": 43
+  },
+  "shard_code_2a1dabaf": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "code",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 22604
+  },
+  "shard_code_319315fd": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "code",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 22748
+  },
+  "shard_code_3b001b41": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "code",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 22666
+  },
+  "shard_code_56026a06": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "code",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 22661
+  },
+  "shard_code_80a608c6": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "code",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 22429
+  },
+  "shard_code_bbf0d721": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "code",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 22515
+  },
+  "shard_code_e39f360f": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "code",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 22581
+  },
+  "shard_code_e53b71cf": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "code",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 22661
+  },
+  "shard_code_f4986bcf": {
+   "admission": "blocked_from_training",
+   "admission_score": 77,
+   "documents": 1,
+   "lane": "code",
+   "reasons": [
+    "hard requirement missing or failed: pii_screen_status"
+   ],
+   "token_count": 32
+  },
+  "shard_indic_14516f8f": {
+   "admission": "admitted_to_registry",
+   "admission_score": 100,
+   "documents": 220,
+   "lane": "indic",
+   "reasons": [
+    "all required fields present"
+   ],
+   "token_count": 126102
+  },
+  "shard_indic_369ffa39": {
+   "admission": "admitted_to_registry",
+   "admission_score": 96,
+   "documents": 220,
+   "lane": "indic",
+   "reasons": [
+    "all required fields present"
+   ],
+   "token_count": 133036
+  },
+  "shard_indic_667673ba": {
+   "admission": "admitted_to_registry",
+   "admission_score": 100,
+   "documents": 92,
+   "lane": "indic",
+   "reasons": [
+    "all required fields present"
+   ],
+   "token_count": 59346
+  },
+  "shard_indic_84daf0ed": {
+   "admission": "admitted_to_registry",
+   "admission_score": 100,
+   "documents": 220,
+   "lane": "indic",
+   "reasons": [
+    "all required fields present"
+   ],
+   "token_count": 120056
+  },
+  "shard_indic_a8171af4": {
+   "admission": "admitted_to_registry",
+   "admission_score": 100,
+   "documents": 220,
+   "lane": "indic",
+   "reasons": [
+    "all required fields present"
+   ],
+   "token_count": 124840
+  },
+  "shard_indic_ab2b5a13": {
+   "admission": "admitted_to_registry",
+   "admission_score": 100,
+   "documents": 220,
+   "lane": "indic",
+   "reasons": [
+    "all required fields present"
+   ],
+   "token_count": 137912
+  },
+  "shard_indic_ae98a23d": {
+   "admission": "admitted_to_registry",
+   "admission_score": 96,
+   "documents": 208,
+   "lane": "indic",
+   "reasons": [
+    "all required fields present"
+   ],
+   "token_count": 132918
+  },
+  "shard_reasoning_80ca2517": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "reasoning",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 27441
+  },
+  "shard_reasoning_b4481c87": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "reasoning",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 27417
+  },
+  "shard_reasoning_bd4ebf92": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "reasoning",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 27389
+  },
+  "shard_reasoning_bec730a7": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "reasoning",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 27325
+  },
+  "shard_reasoning_c62fec6a": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 80,
+   "lane": "reasoning",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 9956
+  },
+  "shard_reasoning_d5a53c9f": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "reasoning",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 27402
+  },
+  "shard_reasoning_fd029f22": {
+   "admission": "admitted_to_registry",
+   "admission_score": 92,
+   "documents": 220,
+   "lane": "reasoning",
+   "reasons": [
+    "all required fields present",
+    "no parent manifests recorded; lineage stops here"
+   ],
+   "token_count": 27427
+  },
+  "shard_web_21a1db4d": {
+   "admission": "admitted_to_registry",
+   "admission_score": 100,
+   "documents": 20,
+   "lane": "web",
+   "reasons": [
+    "all required fields present"
+   ],
+   "token_count": 12355
+  },
+  "shard_web_239dabe8": {
+   "admission": "admitted_to_registry",
+   "admission_score": 100,
+   "documents": 220,
+   "lane": "web",
+   "reasons": [
+    "all required fields present"
+   ],
+   "token_count": 132334
+  },
+  "shard_web_39d54910": {
+   "admission": "admitted_to_registry",
+   "admission_score": 100,
+   "documents": 220,
+   "lane": "web",
+   "reasons": [
+    "all required fields present"
+   ],
+   "token_count": 167114
+  },
+  "shard_web_83c4ff7a": {
+   "admission": "admitted_to_registry",
+   "admission_score": 100,
+   "documents": 220,
+   "lane": "web",
+   "reasons": [
+    "all required fields present"
+   ],
+   "token_count": 151166
+  },
+  "shard_web_b5060618": {
+   "admission": "admitted_to_registry",
+   "admission_score": 100,
+   "documents": 220,
+   "lane": "web",
+   "reasons": [
+    "all required fields present"
+   ],
+   "token_count": 157802
+  }
+ },
+ "held_for_review": 1,
+ "lane_supply_tokens": {
+  "agentic": 37242,
+  "code": 226056,
+  "indic": 834210,
+  "reasoning": 174357,
+  "web": 620771
+ },
+ "shards": 33
+}

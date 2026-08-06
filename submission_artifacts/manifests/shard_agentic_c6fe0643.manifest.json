@@ -1,0 +1,51 @@
+{
+ "admission": "admitted_to_registry",
+ "admission_reasons": [
+  "all required fields present",
+  "no parent manifests recorded; lineage stops here"
+ ],
+ "admission_score": 92,
+ "capability_lane": "agentic",
+ "cleaning_pipeline": "s6_generator",
+ "cleaning_pipeline_hash": "clean_b0142b9d50ea",
+ "config_sha256": "209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62",
+ "content_hash": "sha256_8824661b42dd",
+ "created_at": "2026-08-06T19:01:24.279Z",
+ "dedup_status": "passed",
+ "docs_file": "shard_agentic_c6fe0643.docs.jsonl",
+ "document_count": 80,
+ "eval_overlap_status": "clear",
+ "license_tier": "safe",
+ "normalizer_id": "sarvam1_bpe_no_normalizer",
+ "parent_manifest_ids": [],
+ "pii_screen_status": "screened",
+ "shard_id": "shard_agentic_c6fe0643",
+ "source_manifest": {
+  "origins": [
+   "generated"
+  ],
+  "source_urls": [],
+  "upstream_session": null
+ },
+ "special_tokens": {
+  "bos": {
+   "id": 1,
+   "token": "<s>"
+  },
+  "eos": {
+   "id": 2,
+   "token": "</s>"
+  },
+  "pad": {
+   "id": 3,
+   "token": "<<reserved_token_0>>"
+  },
+  "unk": {
+   "id": 0,
+   "token": "<unk>"
+  }
+ },
+ "token_count": 9599,
+ "tokenizer_hash": "tok_bb5115a36ddb",
+ "tokens_file": "shard_agentic_c6fe0643.tokens.bin"
+}

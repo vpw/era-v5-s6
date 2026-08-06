@@ -295,8 +295,9 @@ class Trainer:
             "planner": {
                 "documents_drawn": self.planner.stats.documents_drawn,
                 "candidates_prepared": self.planner.stats.candidates_prepared,
-                "candidate_tokens_prepared": self.planner.stats.candidate_tokens_prepared,
-                "rejected_tokens": self.planner.stats.rejected_tokens,
+                "positions_prepared": self.planner.stats.positions_prepared,
+                "positions_rejected": self.planner.stats.positions_rejected,
+                "nonpad_prepared": self.planner.stats.nonpad_prepared,
                 "slots_hitting_attempt_cap": self.planner.stats.slots_hitting_attempt_cap,
                 "lane_epochs": self.planner.stats.lane_epochs,
             },

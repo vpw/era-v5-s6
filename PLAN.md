@@ -327,3 +327,42 @@ degenerate.
 
 Phases 1-5 carry ~700 of the 1,000 points; 6-8 carry the rest but also protect phases 1-5 from
 losing credit to unverifiable evidence.
+
+---
+
+## 8. What changed during implementation
+
+The plan above is kept as written. These are the places the build departed from it, and why.
+
+**A vocabulary projection was added.** Not in the original plan. A 68,096-wide output layer
+makes the logit tensor 139 MB per microbatch and the embedding table six times the rest of the
+model, which would have made the demo about the model rather than the data system. The model now
+trains on the 6,144 most frequent ids (~89% of token occurrences); shards, ledger events and
+batch hashes still use real tokenizer ids. `tds/vocab.py`, reported in `performance.json`.
+
+**Run resized to fit the time budget.** 300 steps at 256 context and 8,192 vocab profiled to
+~32 minutes. After two optimizations (the softmax over the vocab was being computed twice --
+once for the loss and once for its gradient -- and GELU's tanh was recomputed in the backward
+pass, together 299ms -> 192ms per microbatch) the run is 180 steps at 192 context, finishing in
+about 4.3 minutes including the crash, resume, fork, replay and audit.
+
+**`recovery_epoch` was added to ledger events.** The plan said the crash would be mid-interval
+but did not say what that does to ledger contiguity. Rolling back to step 90 after a crash at
+100 means steps 90-99 are committed twice. Rather than crash on a checkpoint boundary to dodge
+the problem, events carry a recovery epoch, superseded events stay in the append-only log, and
+the verifier reconstructs the effective stream by taking the highest epoch per step.
+
+**`stream_key` was separated from `branch_id`.** Widget 14's `random` mode keeps the branch id
+`run-a` while re-seeding the sampler -- that is the whole hazard it illustrates -- so the stream's
+hash key had to be separable from the branch it claims to belong to.
+
+**The learning ledger's stage trend is a list, not a dict.** Artifacts are written with sorted
+keys, so a dict keyed by stage name comes back alphabetically (anneal, foundation, skill_build)
+and a reader would draw the curve backwards.
+
+**Two OPUS rejection reasons are unreachable in the run of record**, covered by unit tests
+instead: `stage_mismatch` cannot fire because protected floors require every lane to have
+positive weight in every stage, and `eval_firewall_overlap` does not fire at batch time because
+the shard-level firewall already removed those documents. The batch-time check is defence in
+depth and the audit reports that it stayed clean. The other four outcomes -- accepted, rejected,
+deferred and one genuine `protected_floor_override` -- all occur naturally.

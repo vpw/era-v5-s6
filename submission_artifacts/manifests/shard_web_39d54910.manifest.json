@@ -1,0 +1,56 @@
+{
+ "admission": "admitted_to_registry",
+ "admission_reasons": [
+  "all required fields present"
+ ],
+ "admission_score": 100,
+ "capability_lane": "web",
+ "cleaning_pipeline": "s4_cleaning_pipeline",
+ "cleaning_pipeline_hash": "clean_0ebe9285157e",
+ "config_sha256": "209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62",
+ "content_hash": "sha256_54ca70ffa714",
+ "created_at": "2026-08-06T19:01:24.284Z",
+ "dedup_status": "passed",
+ "docs_file": "shard_web_39d54910.docs.jsonl",
+ "document_count": 220,
+ "eval_overlap_status": "clear",
+ "license_tier": "safe",
+ "normalizer_id": "sarvam1_bpe_no_normalizer",
+ "parent_manifest_ids": [
+  "shard_8cc9429b21e6",
+  "shard_b346d2cbdc45",
+  "shard_eb2f652b5cd3"
+ ],
+ "pii_screen_status": "screened",
+ "shard_id": "shard_web_39d54910",
+ "source_manifest": {
+  "origins": [
+   "s4"
+  ],
+  "source_urls": [
+   "https://huggingface.co/datasets/ai4bharat/sangraha"
+  ],
+  "upstream_session": "S4"
+ },
+ "special_tokens": {
+  "bos": {
+   "id": 1,
+   "token": "<s>"
+  },
+  "eos": {
+   "id": 2,
+   "token": "</s>"
+  },
+  "pad": {
+   "id": 3,
+   "token": "<<reserved_token_0>>"
+  },
+  "unk": {
+   "id": 0,
+   "token": "<unk>"
+  }
+ },
+ "token_count": 167114,
+ "tokenizer_hash": "tok_bb5115a36ddb",
+ "tokens_file": "shard_web_39d54910.tokens.bin"
+}

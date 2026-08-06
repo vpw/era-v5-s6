@@ -1,0 +1,55 @@
+[00:31:17] S6 Training Data Execution System -- full demonstration
+[00:31:17] config config/run_config.json sha256 209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62
+[00:31:17] === shards created
+[00:31:17] corpus: 6208 candidate documents across 5 lanes
+[00:31:21] eval firewall: 6 of 6208 documents blocked, 4 of them despite a trainable registry flag
+[00:31:24] shards created: 33 immutable shards, 1892711 tokens
+[00:31:31] === manifests validated
+[00:31:31] [PASS] tokenizer_hash_verified tok_bb5115a36ddb across 33 manifests; all shard content hashes match
+[00:31:31] admission gate: 31 admitted, 1 held for review, 1 blocked from training
+[00:31:31] === evaluation data blocked
+[00:31:31] eval firewall scanned 6208 documents against 51503 benchmark 13-grams
+[00:31:31]   blocked indic-631d403c05 (indic) -- rejected: benchmark overlap 94.09%
+[00:31:31]   blocked web-375aa4c791 (web) -- rejected: benchmark overlap 83.73%, benchmark-derived content
+[00:31:31]   blocked web-3f41a0af2e (web) -- rejected: never_train flag, benchmark overlap 72.73%
+[00:31:31]   blocked web-c2e4aa8f06 (web) -- rejected: benchmark overlap 64.47%, benchmark-derived content
+[00:31:31]   blocked web-c86b72fbc8 (web) -- rejected: never_train flag, benchmark overlap 76.47%
+[00:31:31]   blocked web-ff127bb381 (web) -- rejected: canary match
+[00:31:31] [PASS] eval_shard_blocked 6 documents blocked, 4 of them despite a trainable registry flag
+[00:31:31] === mixture compiled
+[00:31:31]   agentic    planned   22119  after-OPUS   55298  supply   37242  covered_by_repetition (1.485 epochs)
+[00:31:31]   code       planned   61931  after-OPUS  154828  supply  226056  satisfied_by_unique_tokens (0.685 epochs)
+[00:31:31]   indic      planned   51701  after-OPUS  129252  supply  834210  satisfied_by_unique_tokens (0.155 epochs)
+[00:31:31]   reasoning  planned   43269  after-OPUS  108172  supply  174357  satisfied_by_unique_tokens (0.62 epochs)
+[00:31:31]   web        planned   97459  after-OPUS  243648  supply  620771  satisfied_by_unique_tokens (0.392 epochs)
+[00:31:31]   Agentic demand exceeds unique supply and is covered by deliberate repetition within S5's epoch ceiling of 4.0.
+[00:31:38] === batches packed: training run-a from step 0
+[00:31:38] model: 1206784 parameters, vocab projection 6144 of 68096
+[00:31:38] === crash simulated: scheduled at step 100
+[00:32:03] [PASS] checkpoint_saved ckpt_00030 at step 29 bound to ledger_offset_31
+[00:32:27] [PASS] checkpoint_saved ckpt_00060 at step 59 bound to ledger_offset_62
+[00:32:50] [PASS] checkpoint_saved ckpt_00090 at step 89 bound to ledger_offset_93
+[00:32:57] [CRASH] trainer_crashed at step 100, last checkpoint ckpt_00090
+[00:32:57] trainer subprocess died with exit code 17 as intended; in-memory model, optimizer and sampler state are gone
+[00:33:05] === run resumed
+[00:33:05] restoring ckpt_00090 (step 89, ledger_offset_93); rolling back 10 steps consumed after the checkpoint
+[00:33:05] [PASS] resume_next_batch_matched step 90 step_78ef23e2accc == step_78ef23e2accc; 10/10 rollback-window steps identical to the pre-crash ledger
+[00:33:38] [PASS] checkpoint_saved ckpt_00120 at step 119 bound to ledger_offset_137
+[00:34:06] [PASS] checkpoint_saved ckpt_00150 at step 149 bound to ledger_offset_168
+[00:34:29] [PASS] checkpoint_saved ckpt_00180 at step 179 bound to ledger_offset_199
+[00:34:29] run-a complete at step 180, final model hash model_180ed15677e7
+[00:34:36] === branch forked: run-a -> run-b from step 60
+[00:35:02] run-b trained 20 steps from ckpt_00060
+[00:35:10] === historical stream replayed: steps 40-60
+[00:35:10] [PASS] replay_hash_matched 20/20 steps identical across 11 compared fields
+[00:35:11] recovery modes from step 60: ledger reproduces=True, fork diverges=True, random diverges=True
+[00:35:11] learning ledger: 10 shards scored; lane hardness indic > web > reasoning > agentic > code
+[00:35:11]   keep_with_phase_guard: 7 shards
+[00:35:11]   monitor_next_phase: 1 shards
+[00:35:11]   delay_or_reclean: 2 shards
+[00:35:11] === performance measured
+[00:35:11] token fate: useful 54.9%, OPUS-rejected 38.5%, padding/context 6.6%; 2968.8 useful tokens/sec
+[00:35:11] === audit completed
+[00:35:11] audit: 9/9 checks passed against the generated artifacts alone
+[00:35:11] evidence bundle: 9/9 requirements PASS
+[00:35:11] demonstration complete in 234.3s -- artifacts in submission_artifacts/

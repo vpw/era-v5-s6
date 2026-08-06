@@ -1,0 +1,51 @@
+{
+ "admission": "held_for_review",
+ "admission_reasons": [
+  "dedup_status absent; near-duplicate group unknown",
+  "license_tier 'unknown' needs legal review"
+ ],
+ "admission_score": 68,
+ "capability_lane": "code",
+ "cleaning_pipeline": "s6_generator",
+ "cleaning_pipeline_hash": "clean_b0142b9d50ea",
+ "config_sha256": "209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62",
+ "content_hash": "sha256_f21f36e02f01",
+ "created_at": "2026-08-06T19:01:24.280Z",
+ "dedup_status": null,
+ "docs_file": "shard_code_156e02a8.docs.jsonl",
+ "document_count": 1,
+ "eval_overlap_status": "clear",
+ "license_tier": "unknown",
+ "normalizer_id": "sarvam1_bpe_no_normalizer",
+ "parent_manifest_ids": [],
+ "pii_screen_status": "screened",
+ "shard_id": "shard_code_156e02a8",
+ "source_manifest": {
+  "origins": [
+   "injected"
+  ],
+  "source_urls": [],
+  "upstream_session": null
+ },
+ "special_tokens": {
+  "bos": {
+   "id": 1,
+   "token": "<s>"
+  },
+  "eos": {
+   "id": 2,
+   "token": "</s>"
+  },
+  "pad": {
+   "id": 3,
+   "token": "<<reserved_token_0>>"
+  },
+  "unk": {
+   "id": 0,
+   "token": "<unk>"
+  }
+ },
+ "token_count": 43,
+ "tokenizer_hash": "tok_bb5115a36ddb",
+ "tokens_file": "shard_code_156e02a8.tokens.bin"
+}

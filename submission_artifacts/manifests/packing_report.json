@@ -1,0 +1,235 @@
+{
+ "by_lane": {
+  "agentic": {
+   "configured_policy": "structure_preserving",
+   "documents": 40,
+   "policies": {
+    "best_fit": {
+     "boundary_risk": "medium",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 2797,
+     "used_positions": 4883,
+     "utilization": 0.6358
+    },
+    "concat_and_chop": {
+     "boundary_risk": "high",
+     "positions": 4992,
+     "sequences": 26,
+     "unused_positions": 109,
+     "used_positions": 4883,
+     "utilization": 0.9782
+    },
+    "greedy": {
+     "boundary_risk": "medium",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 2797,
+     "used_positions": 4883,
+     "utilization": 0.6358
+    },
+    "pad_each_doc": {
+     "boundary_risk": "none",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 2797,
+     "used_positions": 4883,
+     "utilization": 0.6358
+    },
+    "structure_preserving": {
+     "boundary_risk": "low",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 2797,
+     "used_positions": 4883,
+     "utilization": 0.6358
+    }
+   }
+  },
+  "code": {
+   "configured_policy": "best_fit",
+   "documents": 40,
+   "policies": {
+    "best_fit": {
+     "boundary_risk": "medium",
+     "positions": 6144,
+     "sequences": 32,
+     "unused_positions": 1990,
+     "used_positions": 4154,
+     "utilization": 0.6761
+    },
+    "concat_and_chop": {
+     "boundary_risk": "high",
+     "positions": 4224,
+     "sequences": 22,
+     "unused_positions": 70,
+     "used_positions": 4154,
+     "utilization": 0.9834
+    },
+    "greedy": {
+     "boundary_risk": "medium",
+     "positions": 6912,
+     "sequences": 36,
+     "unused_positions": 2758,
+     "used_positions": 4154,
+     "utilization": 0.601
+    },
+    "pad_each_doc": {
+     "boundary_risk": "none",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 3526,
+     "used_positions": 4154,
+     "utilization": 0.5409
+    },
+    "structure_preserving": {
+     "boundary_risk": "low",
+     "positions": 6912,
+     "sequences": 36,
+     "unused_positions": 2758,
+     "used_positions": 4154,
+     "utilization": 0.601
+    }
+   }
+  },
+  "indic": {
+   "configured_policy": "concat_and_chop",
+   "documents": 40,
+   "policies": {
+    "best_fit": {
+     "boundary_risk": "medium",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 133,
+     "used_positions": 7547,
+     "utilization": 0.9827
+    },
+    "concat_and_chop": {
+     "boundary_risk": "high",
+     "positions": 20544,
+     "sequences": 107,
+     "unused_positions": 76,
+     "used_positions": 20468,
+     "utilization": 0.9963
+    },
+    "greedy": {
+     "boundary_risk": "medium",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 133,
+     "used_positions": 7547,
+     "utilization": 0.9827
+    },
+    "pad_each_doc": {
+     "boundary_risk": "none",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 133,
+     "used_positions": 7547,
+     "utilization": 0.9827
+    },
+    "structure_preserving": {
+     "boundary_risk": "low",
+     "positions": 576,
+     "sequences": 3,
+     "unused_positions": 133,
+     "used_positions": 443,
+     "utilization": 0.7691
+    }
+   }
+  },
+  "reasoning": {
+   "configured_policy": "structure_preserving",
+   "documents": 40,
+   "policies": {
+    "best_fit": {
+     "boundary_risk": "medium",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 2694,
+     "used_positions": 4986,
+     "utilization": 0.6492
+    },
+    "concat_and_chop": {
+     "boundary_risk": "high",
+     "positions": 4992,
+     "sequences": 26,
+     "unused_positions": 6,
+     "used_positions": 4986,
+     "utilization": 0.9988
+    },
+    "greedy": {
+     "boundary_risk": "medium",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 2694,
+     "used_positions": 4986,
+     "utilization": 0.6492
+    },
+    "pad_each_doc": {
+     "boundary_risk": "none",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 2694,
+     "used_positions": 4986,
+     "utilization": 0.6492
+    },
+    "structure_preserving": {
+     "boundary_risk": "low",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 2694,
+     "used_positions": 4986,
+     "utilization": 0.6492
+    }
+   }
+  },
+  "web": {
+   "configured_policy": "concat_and_chop",
+   "documents": 40,
+   "policies": {
+    "best_fit": {
+     "boundary_risk": "medium",
+     "positions": 7488,
+     "sequences": 39,
+     "unused_positions": 125,
+     "used_positions": 7363,
+     "utilization": 0.9833
+    },
+    "concat_and_chop": {
+     "boundary_risk": "high",
+     "positions": 26880,
+     "sequences": 140,
+     "unused_positions": 129,
+     "used_positions": 26751,
+     "utilization": 0.9952
+    },
+    "greedy": {
+     "boundary_risk": "medium",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 317,
+     "used_positions": 7363,
+     "utilization": 0.9587
+    },
+    "pad_each_doc": {
+     "boundary_risk": "none",
+     "positions": 7680,
+     "sequences": 40,
+     "unused_positions": 317,
+     "used_positions": 7363,
+     "utilization": 0.9587
+    },
+    "structure_preserving": {
+     "boundary_risk": "low",
+     "positions": 1152,
+     "sequences": 6,
+     "unused_positions": 317,
+     "used_positions": 835,
+     "utilization": 0.7248
+    }
+   }
+  }
+ },
+ "context_length": 192
+}

@@ -1,0 +1,105 @@
+{
+ "by_branch": {
+  "run-a": [
+   "ckpt_00030",
+   "ckpt_00060",
+   "ckpt_00090",
+   "ckpt_00120",
+   "ckpt_00150",
+   "ckpt_00180"
+  ]
+ },
+ "checkpoints": 6,
+ "entries": [
+  {
+   "branch_id": "run-a",
+   "checkpoint_id": "ckpt_00030",
+   "config_sha256": "209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62",
+   "dataloader_state": "ledger_offset_31",
+   "global_step": 29,
+   "ledger_offset": 31,
+   "model_hash": "model_0cedc21746ee",
+   "next_step": 30,
+   "parent_branch_id": null,
+   "parent_checkpoint_id": null,
+   "registry_hash": "registry_4bc656e8987a",
+   "state_sha256": "3afe21a4a4db9fa4b97f88590db664566cd680945eef2e9465ba5f2c034b0c9e",
+   "tokens_consumed": 37821
+  },
+  {
+   "branch_id": "run-a",
+   "checkpoint_id": "ckpt_00060",
+   "config_sha256": "209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62",
+   "dataloader_state": "ledger_offset_62",
+   "global_step": 59,
+   "ledger_offset": 62,
+   "model_hash": "model_bc6ebc21c58c",
+   "next_step": 60,
+   "parent_branch_id": null,
+   "parent_checkpoint_id": null,
+   "registry_hash": "registry_4bc656e8987a",
+   "state_sha256": "b8167c2cae3ed6f1f57182f9c4b233fd8fd28648efc83695322773982b44a931",
+   "tokens_consumed": 76138
+  },
+  {
+   "branch_id": "run-a",
+   "checkpoint_id": "ckpt_00090",
+   "config_sha256": "209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62",
+   "dataloader_state": "ledger_offset_93",
+   "global_step": 89,
+   "ledger_offset": 93,
+   "model_hash": "model_0133b92ea68f",
+   "next_step": 90,
+   "parent_branch_id": null,
+   "parent_checkpoint_id": null,
+   "registry_hash": "registry_4bc656e8987a",
+   "state_sha256": "d4e6f24f03116f16f37e9028d5270b5d74dd875e160fab01d5fe9feb6597a39a",
+   "tokens_consumed": 114344
+  },
+  {
+   "branch_id": "run-a",
+   "checkpoint_id": "ckpt_00120",
+   "config_sha256": "209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62",
+   "dataloader_state": "ledger_offset_137",
+   "global_step": 119,
+   "ledger_offset": 137,
+   "model_hash": "model_1d919d65521e",
+   "next_step": 120,
+   "parent_branch_id": null,
+   "parent_checkpoint_id": null,
+   "registry_hash": "registry_4bc656e8987a",
+   "state_sha256": "63b2887573c3d837ae7169cb70f2f2d660058250d54d95744b5b4f8563a0b3d4",
+   "tokens_consumed": 150177
+  },
+  {
+   "branch_id": "run-a",
+   "checkpoint_id": "ckpt_00150",
+   "config_sha256": "209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62",
+   "dataloader_state": "ledger_offset_168",
+   "global_step": 149,
+   "ledger_offset": 168,
+   "model_hash": "model_b0a5b987aa81",
+   "next_step": 150,
+   "parent_branch_id": null,
+   "parent_checkpoint_id": null,
+   "registry_hash": "registry_4bc656e8987a",
+   "state_sha256": "6358503d89a2ea82ced247981dcbbae516a6282f249ae91e940d971a9ee4aa5c",
+   "tokens_consumed": 185454
+  },
+  {
+   "branch_id": "run-a",
+   "checkpoint_id": "ckpt_00180",
+   "config_sha256": "209ec6c1b314c1fbd4c1dce568b946bb9ef65ed0e43ddd227eab25d5a8eccd62",
+   "dataloader_state": "ledger_offset_199",
+   "global_step": 179,
+   "ledger_offset": 199,
+   "model_hash": "model_180ed15677e7",
+   "next_step": 180,
+   "parent_branch_id": null,
+   "parent_checkpoint_id": null,
+   "registry_hash": "registry_4bc656e8987a",
+   "state_sha256": "3a234c7454528d84e1a3345ad413f79e41848d6ee9857273dd313d8991f1b096",
+   "tokens_consumed": 221193
+  }
+ ]
+}

@@ -21,8 +21,8 @@ ledger/OPUS/manifest/recovery widgets — implement from these, not from scratch
 
 ## Phase 0 — foundation
 
-- [ ] `git init` a standalone repo rooted at this directory. Decided: `work/` is ignored,
-      the run of record's `submission_artifacts/` **is** committed (note it in README).
+- [x] `git init` a standalone repo rooted at this directory, branch `main`. `work/` is
+      ignored; the run of record's `submission_artifacts/` **is** committed (noted in README).
 - [x] `.gitignore`, `requirements.txt` — numpy, tokenizers, pytest. No network at demo time.
 - [x] `tds/hashing.py` — canonical JSON (sorted keys, fixed separators) + sha256 helpers,
       plus `stable_uniform` for reproducible pseudo-random quantities.
@@ -51,7 +51,7 @@ ledger/OPUS/manifest/recovery widgets — implement from these, not from scratch
 - [x] `tds/manifest.py` — widget 6 schema exactly, plus the **two-tier admission gate**.
       Verified on the real corpus: 31 admitted / 1 held (missing `dedup_status`, unknown
       licence) / 1 blocked (missing `pii_screen_status`). All three verdicts occur naturally.
-- [ ] Assert widget 1's 15-field checklist has a home — shard-level in the manifest, batch-level
+- [x] Assert widget 1's 15-field checklist has a home — shard-level in the manifest, batch-level
       in the ledger event. (Deferred to `audit.py`, which is where the assertion belongs.)
 - [x] `tds/firewall.py` — 4 **independent** checks, 13-gram window and 2-hit rule inherited from
       S4's `decontaminate.py`, scanning against real MMLU/GSM8K/MILU-Hindi text. Result: 6 of
@@ -69,94 +69,94 @@ ledger/OPUS/manifest/recovery widgets — implement from these, not from scratch
       two: `satisfied_by_unique_tokens` / `covered_by_repetition` (within S5's epoch ceiling of
       4) / `shortfall`. Agentic needs 3.3 epochs — short on unique tokens under every profile,
       exactly widget 7's finding, and left that way on purpose.
-- [ ] `tds/opus.py` — accept / reject / defer / protected with widget 10's exact decision-record
+- [x] `tds/opus.py` — accept / reject / defer / protected with widget 10's exact decision-record
       schema and 5-value rejection taxonomy (+ `deferred_for_anneal`, `protected_floor_override`).
       **Proxy score must be deterministic** (hash of candidate content x lane/stage/model-age
       priors), never an RNG that advances with training — otherwise replay breaks.
-- [ ] Encode the invariant: protected floors override score/quota rejections but **never** an
+- [x] Encode the invariant: protected floors override score/quota rejections but **never** an
       `eval_firewall_overlap` hit.
-- [ ] `tds/sampler.py` — `plan(branch_id, step) -> BatchSpec`, a pure function of seed, branch,
+- [x] `tds/sampler.py` — `plan(branch_id, step) -> BatchSpec`, a pure function of seed, branch,
       step, schedule and admitted registry. This is the spine of resume/replay/fork.
 
 ## Phase 3 — batches
 
-- [ ] `tds/packing.py` — all 5 policies (pad-each-doc, concat-and-chop, greedy, best-fit,
+- [x] `tds/packing.py` — all 5 policies (pad-each-doc, concat-and-chop, greedy, best-fit,
       structure-preserving) with utilization / unused positions / boundary risk, reported in
       widget 5's table shape. Per-lane defaults: web+indic concat-and-chop, code best-fit,
       reasoning+agentic structure-preserving.
-- [ ] `tds/masks.py` — loss mask (agentic masks user turns + tool observations; plain lanes fully
+- [x] `tds/masks.py` — loss mask (agentic masks user turns + tool observations; plain lanes fully
       loss-bearing on non-pad), attention blocked across segments, position ids reset at EOS.
       Record `position_policy: "packed_reset_on_eos"` in the ledger.
-- [ ] `batch_hash = sha256(input_ids, loss_mask, position_ids, segment_ids)` — batch identity is
+- [x] `batch_hash = sha256(input_ids, loss_mask, position_ids, segment_ids)` — batch identity is
       independent of model state. This is what replay compares.
 
 ## Phase 4 — training and ledger
 
-- [ ] `tds/model.py` — tiny NumPy transformer, forward + hand-written backward, per-token loss.
+- [x] `tds/model.py` — tiny NumPy transformer, forward + hand-written backward, per-token loss.
       Validate with a finite-difference gradient check.
-- [ ] `tds/trainer.py` — train loop; `global_step` <-> `ledger_offset`; measures its own timing
+- [x] `tds/trainer.py` — train loop; `global_step` <-> `ledger_offset`; measures its own timing
       for the throughput report.
-- [ ] `tds/ledger.py` — append-only JSONL with widget 8's `batch_committed` /`checkpoint_bound` /
+- [x] `tds/ledger.py` — append-only JSONL with widget 8's `batch_committed` /`checkpoint_bound` /
       `worker_crash_recovered` schemas verbatim (+ `batch_hash`, `packing_utilization`,
       `loss_bearing_tokens`). Token span ids in `<lane>_<step>_<mb>:<start>-<end>` form.
-- [ ] `tds/checkpoint.py` — model + optimizer + `dataloader_state: "ledger_offset_<k>"` + rng
+- [x] `tds/checkpoint.py` — model + optimizer + `dataloader_state: "ledger_offset_<k>"` + rng
       state, written as `.npz` with an index.
 
 ## Phase 5 — crash, resume, replay, fork
 
-- [ ] Run training phases as **subprocesses** so the crash is a hard `os._exit(1)` that destroys
+- [x] Run training phases as **subprocesses** so the crash is a hard `os._exit(1)` that destroys
       in-memory state — otherwise "expected == actual" on resume is tautological.
-- [ ] Resume: fresh process reconstructs from checkpoint + ledger only; asserts the next batch
+- [x] Resume: fresh process reconstructs from checkpoint + ledger only; asserts the next batch
       hash matches `plan(branch, last_offset+1)`; separately scans the full ledger for contiguity
       and duplicate offsets. -> `resume_report.json`
-- [ ] Replay: re-derive an earlier interval from the immutable shards and compare batch ids,
+- [x] Replay: re-derive an earlier interval from the immutable shards and compare batch ids,
       token span ids, loss-mask hashes and batch hashes field-by-field. -> `replay_report.json`
-- [ ] Fork: restore an earlier checkpoint as `run-b`, recording parent branch + parent step;
+- [x] Fork: restore an earlier checkpoint as `run-b`, recording parent branch + parent step;
       `branch_id` changes **only** on fork. -> `fork_report.json`
-- [ ] `random` mode as the **negative control** — same checkpoint, no ledger, reseeded sampler ->
+- [x] `random` mode as the **negative control** — same checkpoint, no ledger, reseeded sampler ->
       a different stream. Proves the ledger is what makes replay work. Three-way comparison table
       in `evidence.md` (widget 14).
-- [ ] Use widget 14's run-level vocabulary: `run_started`, `trainer_crashed`,
+- [x] Use widget 14's run-level vocabulary: `run_started`, `trainer_crashed`,
       `checkpoint_restored{mode: ledger|fork|random}`.
 
 ## Phase 6 — learning ledger and performance
 
-- [ ] `tds/learning.py` — per-token loss -> aggregate by (shard, lane, stage) -> first-vs-last
+- [x] `tds/learning.py` — per-token loss -> aggregate by (shard, lane, stage) -> first-vs-last
       exposure loss delta -> usefulness score (0-100) -> `v6_policy_hint`
       (`keep_with_phase_guard` / `delay_or_reclean`), in widget 12's report-card shape. Explicit
       joinable event chain: `batch_committed` -> `token_ppl_aggregated` ->
       `learning_delta_attached` -> `v6_policy_hint`.
-- [ ] Check widget 11's prediction against our own trace (Indic hardest, and still hardest late)
+- [x] Check widget 11's prediction against our own trace (Indic hardest, and still hardest late)
       — report what we measure either way.
-- [ ] `tds/perf.py` — widget 15's 4-way token fate, all **measured**: useful / opus_rejected /
+- [x] `tds/perf.py` — widget 15's 4-way token fate, all **measured**: useful / opus_rejected /
       padding_waste / loader_wait. Headline: useful loss-bearing tokens/sec + packing
       utilization. -> `performance.json`, fully reconstructible from the ledger.
 
 ## Phase 7 — audit and evidence
 
-- [ ] `tds/audit.py` — standalone entry point reading **only** `submission_artifacts/` + shard
+- [x] `tds/audit.py` — standalone entry point reading **only** `submission_artifacts/` + shard
       files. Re-derives: content/tokenizer hashes, every admission verdict, ledger contiguity,
       **batch hashes recomputed from shard bytes + recorded spans**, planned-vs-actual mixture
       shares and floor compliance, firewall leak scan, throughput arithmetic.
       -> `audit_report.json`
-- [ ] `tds/evidence.py` — `evidence.json` + `evidence.md` generated **from the audit's findings**
+- [x] `tds/evidence.py` — `evidence.json` + `evidence.md` generated **from the audit's findings**
       (the code path that writes a PASS is the path that verified it). `evidence.md` renders the
       assignment's exact 9 rows.
-- [ ] `run_demo.py` — one command, no manual steps, produces the full tree:
+- [x] `run_demo.py` — one command, no manual steps, produces the full tree:
       `run.log`, `evidence.json`, `evidence.md`, `performance.json`, `manifests/`, `ledgers/`,
       `checkpoints/`, `reports/`.
-- [ ] `run.log` — all 13 required lifecycle events in order, with `[PASS]` markers for
+- [x] `run.log` — all 13 required lifecycle events in order, with `[PASS]` markers for
       `tokenizer_hash_verified`, `eval_shard_blocked`, `checkpoint_saved`,
       `resume_next_batch_matched`, `replay_hash_matched`.
 
 ## Phase 8 — tests, docs, submission
 
-- [ ] Invariant tests (pytest) — the 15 rows in `PLAN.md` §6: gradient check, tokenizer freeze,
+- [x] Invariant tests (pytest) — the 15 rows in `PLAN.md` §6: gradient check, tokenizer freeze,
       shard immutability, admission tiers, firewall (incl. no eval token at a loss-bearing
       position over the real run), packing/masks/positions, OPUS determinism + floor-vs-firewall,
       mixture floors + shortfall, ledger append-only/contiguous, resume, replay, fork,
       evidence-claims-resolve.
-- [ ] Short README — architecture + design decisions, dense, no padding (same grading bias as
+- [x] Short README — architecture + design decisions, dense, no padding (same grading bias as
       prior sessions). Cross-reference which S1-S5 artifact satisfies which contract.
 - [ ] Verify a clean-clone run: fresh venv, `pip install -r requirements.txt`,
       `python run_demo.py`, under 3 minutes, no network.
