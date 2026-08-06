@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Working output of `python run_demo.py`. The graded run of record is committed
+# separately under submission_artifacts/ once it is captured -- see README.
+/work/

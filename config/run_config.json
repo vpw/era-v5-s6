@@ -1,0 +1,126 @@
+{
+  "_doc": "Every knob the demo run depends on. run_demo.py reads this file and nothing else; the hash of this file is recorded in the evidence bundle so a run can be tied to its configuration.",
+
+  "run": {
+    "run_id": "s6-demo",
+    "primary_branch_id": "run-a",
+    "fork_branch_id": "run-b",
+    "seed": 20260806
+  },
+
+  "tokenizer": {
+    "path": "fixtures/tokenizer/tokenizer-sarvam1.json",
+    "name": "sarvam1",
+    "_provenance": "Inherited from S4 (models/tokenizer-sarvam1.json), the same 68,096-entry vocab the S5 proxy ablation trained on. Frozen here: the demo never retrains or extends it.",
+    "special_tokens": {
+      "bos": "<s>",
+      "eos": "</s>",
+      "unk": "<unk>",
+      "pad": "<<reserved_token_0>>"
+    },
+    "normalizer_id": "sarvam1_bpe_no_normalizer"
+  },
+
+  "lanes": {
+    "_doc": "Capability lanes. 'origin' records whether the documents are inherited from S4's cleaned corpus or generated locally, because S4's Sangraha corpus only covers Indic and English web text.",
+    "web":       {"origin": "s4",        "packing_policy": "concat_and_chop",       "loss_policy": "all_non_pad"},
+    "indic":     {"origin": "s4",        "packing_policy": "concat_and_chop",       "loss_policy": "all_non_pad"},
+    "code":      {"origin": "generated", "packing_policy": "best_fit",              "loss_policy": "all_non_pad"},
+    "reasoning": {"origin": "generated", "packing_policy": "structure_preserving",  "loss_policy": "all_non_pad"},
+    "agentic":   {"origin": "generated", "packing_policy": "structure_preserving",  "loss_policy": "assistant_only"}
+  },
+
+  "corpus": {
+    "_doc": "Document counts drawn per lane. Small on purpose: the goal is a correct, auditable data system, not scale. The code and reasoning counts are sized so their supply covers demand after S5's 60% OPUS rejection rate without exceeding the epoch ceiling -- the 'collect more' response to a compiler shortfall warning. Agentic is deliberately left short: widget 7 found agentic runs out under every curriculum profile, and pretending otherwise by generating 3,000 synthetic trajectories would hide the one supply constraint the session says is real.",
+    "docs_per_lane": {"web": 900, "indic": 1400, "code": 2200, "reasoning": 1400, "agentic": 300},
+    "s4_lang_to_lane": {"eng": "web", "hin": "indic", "tel": "indic"},
+    "shard_target_docs": 220
+  },
+
+  "eval_firewall": {
+    "_doc": "Four independent checks, each contributing its own clause to a rejection reason. See tds/firewall.py.",
+    "ngram_n": 13,
+    "min_ngram_hits": 2,
+    "blocking_overlap_pct": 10.0,
+    "canary_prefix": "ERA5-S6-CANARY",
+    "checks_enabled": {
+      "never_train_flag": true,
+      "ngram_overlap": true,
+      "canary_match": true,
+      "derived_content": true
+    }
+  },
+
+  "mixture": {
+    "_doc": "Lane weights, protected floors and the anneal reserve are read from S5's data/ledger.json (mirrored into fixtures/upstream/s5_ledger.json) and collapsed onto the three curriculum stages the S6 session uses.",
+    "_budget_note": "614400 = train.total_steps (300) x microbatches_per_step (4) x microbatch_size (2) x sequence_length (256). The planned budget and what the run actually consumes are the same number on purpose, so planned-versus-actual mixture shares are a real comparison rather than a rescaled one. Stage boundaries sit at 55% and 85% of the budget, the same split widget 7 uses for its 0-66B / 66-102B / 102-120B timeline.",
+    "total_tokens": 614400,
+    "stages": [
+      {"stage": "foundation",  "token_start": 0,      "token_end": 337920},
+      {"stage": "skill_build", "token_start": 337920, "token_end": 522240},
+      {"stage": "anneal",      "token_start": 522240, "token_end": 614400}
+    ],
+    "warmup_band_pct": 4.0,
+    "stage_weights": {
+      "_doc": "S5's main mixture bent across the three stages: web falls, code/reasoning climb, Indic doubles into the anneal reserve. Lanes S5 carries but S6 does not model (stem, long_context) are folded into web and reasoning respectively.",
+      "foundation":  {"web": 0.45, "code": 0.20, "indic": 0.16, "reasoning": 0.11, "agentic": 0.08},
+      "skill_build": {"web": 0.28, "code": 0.28, "indic": 0.16, "reasoning": 0.20, "agentic": 0.08},
+      "anneal":      {"web": 0.14, "code": 0.20, "indic": 0.34, "reasoning": 0.24, "agentic": 0.08}
+    },
+    "protected_floors": {"indic": 0.12, "agentic": 0.02, "reasoning": 0.01},
+    "anneal_reserve_lanes": ["indic", "reasoning"]
+  },
+
+  "opus": {
+    "_doc": "Deterministic selector. The proxy score is derived from the candidate's content hash crossed with lane/stage/model-age priors -- never from an RNG that advances with training, or replay would not reproduce.",
+    "proxy_version": "opus_proxy_s6_v1",
+    "accept_threshold": 0.42,
+    "defer_threshold": 0.34,
+    "lane_quota_slack": 1.25,
+    "model_age_buckets": [
+      {"name": "early",  "until_tokens": 400000},
+      {"name": "mid",    "until_tokens": 900000},
+      {"name": "late",   "until_tokens": 1200000}
+    ]
+  },
+
+  "batch": {
+    "sequence_length": 256,
+    "microbatch_size": 2,
+    "microbatches_per_step": 4,
+    "position_policy": "packed_reset_on_eos"
+  },
+
+  "train": {
+    "total_steps": 300,
+    "checkpoint_interval": 50,
+    "learning_rate": 0.0025,
+    "warmup_steps": 20,
+    "grad_clip": 1.0
+  },
+
+  "model": {
+    "_doc": "Tiny NumPy transformer. Small enough for a CPU demo, large enough that per-token loss deltas by lane are meaningful.",
+    "n_layer": 2,
+    "n_head": 4,
+    "d_model": 128,
+    "d_ff": 512,
+    "vocab_cap": 68096,
+    "dropout": 0.0
+  },
+
+  "recovery": {
+    "_doc": "The crash is a real os._exit(1) in a training subprocess, so the resuming process rebuilds from the checkpoint and ledger on disk only. If the whole demo shared one process, 'expected == actual' would be trivially true.",
+    "crash_at_step": 172,
+    "crashed_rank": 4,
+    "replay_interval": {"step_start": 60, "step_end": 90},
+    "fork_from_step": 100,
+    "random_control_from_step": 100
+  },
+
+  "paths": {
+    "work_dir": "work",
+    "shard_dir": "work/shards",
+    "artifacts_dir": "submission_artifacts"
+  }
+}

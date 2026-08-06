@@ -1,0 +1,39 @@
+{
+ "_doc": "Where each committed fixture came from. Regenerate with scripts/build_fixtures.py.",
+ "fixture_sha256": {
+  "eval/benchmarks.json": "ccca2ee4d97722fa700c4322754d7b53bd4eb59a81381bca943f345e77316ec5",
+  "tokenizer/tokenizer-sarvam1.json": "bb5115a36ddb956a4ee0fd534e9870dd69157835622aec9c53062896f883c072",
+  "upstream/s4_docs.jsonl.gz": "8c4e19adb1c4dd6e82ee6e3b5cc601a3f6ae4906a9c136a739ea0d8c6555613d",
+  "upstream/s4_manifests.json": "ad04fddc459108e7fff4bc45547d7d3a40eec6f25ddfd3f5e31cd49fb0275ce4",
+  "upstream/s5_ledger.json": "8a090e9ba0ee44274e36aa1dd1270546130ef87fb7c1b17a645410d040d1b452"
+ },
+ "sources": {
+  "eval_benchmarks": {
+   "examples_per_set": 300,
+   "from": "S4/assignment/data/raw/eval/{GSM8K,MMLU,MILU-Hindi}.json",
+   "used_for": "13-gram fingerprints for the eval firewall's overlap check"
+  },
+  "s4_docs": {
+   "documents": 2300,
+   "from": "S4/assignment/data/run/shards/*.jsonl (stage 06-decontaminated output)",
+   "per_language": {
+    "eng": 900,
+    "hin": 900,
+    "tel": 500
+   },
+   "selection": "deterministic: ranked by sha256(upstream_doc_id), lowest N per language"
+  },
+  "s4_manifests": {
+   "from": "S4/assignment/data/run/manifests.json",
+   "used_for": "parent_manifest_ids, cleaning_pipeline_hash, source_manifest lineage"
+  },
+  "s5_ledger": {
+   "from": "S5/assignment/data/ledger.json",
+   "used_for": "lane weights, protected floors, anneal reserve, OPUS keep fraction"
+  },
+  "tokenizer": {
+   "from": "S4/assignment/models/tokenizer-sarvam1.json",
+   "note": "68,096-entry BPE vocab; the same tokenizer the S5 proxy ablation trained on"
+  }
+ }
+}

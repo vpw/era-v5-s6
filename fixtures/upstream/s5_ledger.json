@@ -1,0 +1,174 @@
+{
+  "budget_tokens": 2400000000000.0,
+  "stage_tokens": {
+    "pretraining": 2280000000000.0,
+    "anneal": 48000000000.0,
+    "sft": 24000000000.0,
+    "reasoning_training": 24000000000.0,
+    "preference": 24000000000.0
+  },
+  "pretraining_tokens": 2280000000000.0,
+  "anneal_tokens": 48000000000.0,
+  "main_mixture_pct": {
+    "general_web": 32,
+    "code": 24,
+    "stem": 12,
+    "indic": 16,
+    "reasoning": 8,
+    "long_context": 6,
+    "agentic": 2
+  },
+  "anneal_mixture_pct": {
+    "general_web": 8,
+    "code": 20,
+    "stem": 10,
+    "indic": 28,
+    "reasoning": 18,
+    "long_context": 8,
+    "agentic": 8
+  },
+  "always_on_lane_pct": {
+    "indic": 7.0,
+    "agentic": 2.0,
+    "reasoning": 1.0
+  },
+  "always_on_total_pct": 10.0,
+  "floors_pct": {
+    "indic": 12.0,
+    "agentic": 2.0
+  },
+  "epoch_ceiling": 4.0,
+  "lanes": {
+    "general_web": {
+      "main_share_pct": 32,
+      "anneal_share_pct": 8,
+      "demand_tokens": 733440000000.0,
+      "unique_supply_tokens": 4691000000000,
+      "epochs_required": 0.15635045832445107,
+      "verdict": "covered by unique tokens",
+      "shortfall_tokens": 0.0
+    },
+    "code": {
+      "main_share_pct": 24,
+      "anneal_share_pct": 20,
+      "demand_tokens": 556800000000.0,
+      "unique_supply_tokens": 1103000000000,
+      "epochs_required": 0.5048050770625566,
+      "verdict": "covered by unique tokens",
+      "shortfall_tokens": 0.0
+    },
+    "stem": {
+      "main_share_pct": 12,
+      "anneal_share_pct": 10,
+      "demand_tokens": 278400000000.0,
+      "unique_supply_tokens": 146000000000,
+      "epochs_required": 1.906849315068493,
+      "verdict": "needs repetition (1.91 epochs)",
+      "shortfall_tokens": 0.0
+    },
+    "indic": {
+      "main_share_pct": 16,
+      "anneal_share_pct": 28,
+      "demand_tokens": 378240000000.0,
+      "unique_supply_tokens": 275900000000,
+      "epochs_required": 1.3709314969191737,
+      "verdict": "needs repetition (1.37 epochs)",
+      "shortfall_tokens": 0.0
+    },
+    "reasoning": {
+      "main_share_pct": 8,
+      "anneal_share_pct": 18,
+      "demand_tokens": 191040000000.0,
+      "unique_supply_tokens": 85100000000,
+      "epochs_required": 2.2448883666274972,
+      "verdict": "needs repetition (2.24 epochs)",
+      "shortfall_tokens": 0.0
+    },
+    "long_context": {
+      "main_share_pct": 6,
+      "anneal_share_pct": 8,
+      "demand_tokens": 140640000000.0,
+      "unique_supply_tokens": 100000000000,
+      "epochs_required": 1.4064,
+      "verdict": "needs repetition (1.41 epochs)",
+      "shortfall_tokens": 0.0
+    },
+    "agentic": {
+      "main_share_pct": 2,
+      "anneal_share_pct": 8,
+      "demand_tokens": 49440000000.0,
+      "unique_supply_tokens": 627000000,
+      "epochs_required": 78.85167464114832,
+      "verdict": "must synthesise",
+      "shortfall_tokens": 46932000000.0
+    }
+  },
+  "indic_tier_plan": {
+    "A_verified": {
+      "unique": 64000000000,
+      "epochs": 2.5,
+      "tokens": 160000000000.0,
+      "share_of_indic_pct": 42.30118443316413
+    },
+    "B_unverified": {
+      "unique": 44900000000,
+      "epochs": 2.0,
+      "tokens": 89800000000.0,
+      "share_of_indic_pct": 23.741539763113366
+    },
+    "C_translated": {
+      "unique": 5000000000,
+      "epochs": 2.0,
+      "tokens": 10000000000.0,
+      "share_of_indic_pct": 2.643824027072758
+    },
+    "D_synthetic": {
+      "unique": 162000000000,
+      "epochs": 0.7311111111111112,
+      "tokens": 118440000000.0,
+      "share_of_indic_pct": 31.313451776649746
+    }
+  },
+  "indic_tier_unique": {
+    "A_verified": 64000000000,
+    "B_unverified": 44900000000,
+    "C_translated": 5000000000,
+    "D_synthetic": 162000000000
+  },
+  "agentic": {
+    "trajectory_raw": 360000000,
+    "function_call_raw": 267000000,
+    "trajectory_supervised": 190800000.0,
+    "function_call_supervised": 114810000.0,
+    "supervised_total": 305610000.0,
+    "traj_frac": 0.53,
+    "call_frac": 0.43,
+    "demand_tokens": 49440000000.0,
+    "unique_supply_tokens": 627000000,
+    "real_at_epoch_ceiling": 2508000000.0,
+    "must_be_built_tokens": 46932000000.0,
+    "built_fraction": 0.9492718446601942,
+    "shortfall_multiple": 78.85167464114832
+  },
+  "opus": {
+    "keep_fraction": 0.4,
+    "effective_multiplier": 6.0,
+    "candidate_tokens_required": 5640000000000.0,
+    "always_on_bypass_frac": 0.1,
+    "total_unique_supply": 6401627000000,
+    "candidate_headroom": 761627000000.0,
+    "max_feasible_budget": 2724096595744.6807,
+    "effective_tokens": 14400000000000.0,
+    "effective_tokens_per_param_at_120B": 120.0,
+    "raw_tokens_per_param_at_120B": 20.0,
+    "compute_overhead": 0.047
+  },
+  "checks": {
+    "main_sums_to_100": true,
+    "anneal_sums_to_100": true,
+    "floors_respected": true,
+    "always_on_within_floors": true,
+    "indic_tiers_sum_to_demand": true,
+    "candidate_pool_fits_in_supply": true
+  }
+}

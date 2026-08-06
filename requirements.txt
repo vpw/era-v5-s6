@@ -1,0 +1,8 @@
+# S6 Training Data Execution System.
+#   python3 -m venv .venv && .venv/bin/pip install -r requirements.txt && .venv/bin/python run_demo.py
+#
+# Deliberately small. The toy transformer is hand-written NumPy (forward and backward),
+# so there is no deep-learning framework here and no network access at demo time.
+numpy>=1.24
+tokenizers>=0.19      # loads the frozen sarvam1 vocab inherited from S2/S4
+pytest>=7.4           # invariant tests only; run_demo.py does not need it
